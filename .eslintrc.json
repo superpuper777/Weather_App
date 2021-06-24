@@ -22,10 +22,14 @@
     },
     "plugins": [
         "react",
-        "prettier"
+        "prettier",
+        "better-styled-components"
     ],
     "rules": {
         "prettier/prettier": "error",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "arrow-body-style": 0,
+        "react/prop-types": 0,
+        "no-unused-vars": 1
     }
 }
