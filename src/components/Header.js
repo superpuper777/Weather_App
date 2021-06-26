@@ -14,7 +14,7 @@ const StyledHeader = styled.div`
     gap: 4rem;
     margin: 0;
     list-style: none;
-    padding: 0 2rem;
+    padding: 0 6rem;
     background-color: #fff;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;

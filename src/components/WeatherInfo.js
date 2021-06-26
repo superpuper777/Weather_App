@@ -9,7 +9,7 @@ const Title = styled.h1`
 `;
 
 const MainWrapper = styled.section`
-  width: 50%;
+  width: 40%;
   padding: 4em;
   background: papayawhip;
   display: flex;
@@ -36,8 +36,8 @@ const Span = styled.span`
 `;
 
 const Text = styled.p`
-  width: 100px;
-  color: #d38ca4;
+  width: 150px;
+  color: palevioletred;
   font-size: 16px;
   margin: 0 2rem;
 `;
@@ -59,16 +59,16 @@ const WeatherInfo = () => {
       <Title>Minsk, BY</Title>
       <Wrapper>
         <WiNightAltShowers size={46} color="palevioletred" />
-        <Title>30°C</Title>
+        <Title>30&#8451;</Title>
       </Wrapper>
-      <Span>Feels like 32°C. Overcast clouds. Light breeze </Span>
+      <Span>Feels like 32&#8451;. Overcast clouds. Light breeze </Span>
       <Div>
         <Text>0.18mm</Text>
         <Text>3.8m/s NNW</Text>
-        <Text>1012hPa</Text>
+        <Text>1012 hPa</Text>
         <Text>Humidity: 80%</Text>
         <Text>UV: 1</Text>
-        <Text>Dew point: 24°C</Text>
+        <Text>Dew point: 24&#8451;</Text>
         <Text>Visibility: 10.0km</Text>
       </Div>
     </MainWrapper>
