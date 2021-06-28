@@ -10,10 +10,10 @@ const StyledSearchBar = styled.div`
   align-items: center;
   gap: 2rem;
 `;
-const SearchBar = () => {
+const SearchBar = ({ setCurrentWeather }) => {
   return (
     <StyledSearchBar>
-      <SearchInput />
+      <SearchInput setCurrentWeather={setCurrentWeather} />
       <SearchFilter />
     </StyledSearchBar>
   );

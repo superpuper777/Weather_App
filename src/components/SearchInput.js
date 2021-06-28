@@ -40,11 +40,10 @@ const Button = styled.button`
   }
 `;
 
-const SearchInput = () => {
+const SearchInput = ({ setCurrentWeather }) => {
   const [query, setQuery] = useState('Minsk');
   const [searchTerm, setSearchTerm] = useState('Minsk');
-  const [data, setData] = useState([]);
-
+  // const [data, setData] = useState([]);
   const changeLocation = () => {
     setSearchTerm(query);
     setQuery('');
@@ -53,13 +52,14 @@ const SearchInput = () => {
   useEffect(() => {
     const getWeather = async () => {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}&units=metric`,
       );
-      console.log(response);
-      setData(response.data);
+      console.log(JSON.stringify(response.data));
+      // setData(response.data);
+      setCurrentWeather(response.data);
     };
     getWeather();
-  }, [searchTerm]);
+  }, [searchTerm, setCurrentWeather]);
   return (
     <StyledSearchInput>
       <Input

@@ -51,25 +51,35 @@ const Div = styled.div`
   gap: 1rem;
   border-left: 1px solid #d38ca4;
 `;
+const upperCase = (str) => {
+  if (!str) return str;
+  return str[0].toUpperCase() + str.slice(1);
+};
 
-const WeatherInfo = () => {
+const WeatherInfo = ({ currentWeather }) => {
+  const { name, main, weather, sys, visibility, wind } = currentWeather;
+
   return (
     <MainWrapper>
       <StyledDate>{new Date().toDateString()} </StyledDate>
-      <Title>Minsk, BY</Title>
+      <Title>
+        {name}, {sys.country}
+      </Title>
       <Wrapper>
         <WiNightAltShowers size={46} color="palevioletred" />
-        <Title>30&#8451;</Title>
+        <Title>{Math.round(main.temp)}&#8451;</Title>
       </Wrapper>
-      <Span>Feels like 32&#8451;. Overcast clouds. Light breeze </Span>
+      <Span>
+        Feels like {Math.round(main.feels_like)}&#8451;. {upperCase(weather[0].description)}.
+      </Span>
       <Div>
         <Text>0.18mm</Text>
-        <Text>3.8m/s NNW</Text>
-        <Text>1012 hPa</Text>
-        <Text>Humidity: 80%</Text>
+        <Text>{wind.speed}m/s NNW</Text>
+        <Text>{main.pressure} hPa</Text>
+        <Text>Humidity: {main.humidity}%</Text>
         <Text>UV: 1</Text>
         <Text>Dew point: 24&#8451;</Text>
-        <Text>Visibility: 10.0km</Text>
+        <Text>Visibility: {visibility / 1000}km</Text>
       </Div>
     </MainWrapper>
   );
