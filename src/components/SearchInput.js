@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import axios from 'axios';
+
+const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
 
 const StyledSearchInput = styled.div`
   margin: 1em;
@@ -38,12 +41,37 @@ const Button = styled.button`
 `;
 
 const SearchInput = () => {
+  const [query, setQuery] = useState('Minsk');
+  const [searchTerm, setSearchTerm] = useState('Minsk');
+  const [data, setData] = useState([]);
+
+  const changeLocation = () => {
+    setSearchTerm(query);
+    setQuery('');
+  };
+
+  useEffect(() => {
+    const getWeather = async () => {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}`,
+      );
+      console.log(response);
+      setData(response.data);
+    };
+    getWeather();
+  }, [searchTerm]);
   return (
     <StyledSearchInput>
-      <Input type="text" placeholder="Search City" />
-      <Button primary>Search</Button>
+      <Input
+        type="text"
+        placeholder="Search City"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <Button primary onClick={changeLocation}>
+        Search
+      </Button>
     </StyledSearchInput>
   );
 };
-
 export default SearchInput;
