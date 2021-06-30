@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as S from './styled';
 import WeatherListItem from './WeatherListItem';
 
 const infoItems = [
@@ -22,23 +22,19 @@ const infoItems = [
     description: 'Light rain. Moderate breeze.',
   },
 ];
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
+
 const WeatherList = () => {
   return (
-    <div>
-      <Title>5-day forecast</Title>
-      <ul>
+    <S.WeatherWrapper>
+      <S.Title>5-day forecast</S.Title>
+      <S.WeatherList>
         {infoItems.map((item) => (
-          <li key={item.id}>
+          <S.WeatherListItem key={item.id}>
             <WeatherListItem item={item} />
-          </li>
+          </S.WeatherListItem>
         ))}
-      </ul>
-    </div>
+      </S.WeatherList>
+    </S.WeatherWrapper>
   );
 };
 

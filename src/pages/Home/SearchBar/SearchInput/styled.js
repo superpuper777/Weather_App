@@ -1,12 +1,11 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledSearchInput = styled.div`
+export const StyledSearchInput = styled.div`
   margin: 1em;
   display: flex;
   justify-content: center;
 `;
-const Input = styled.input`
+export const Input = styled.input`
   font-size: 18px;
   padding: 10px;
   border: 2px solid palevioletred;
@@ -16,7 +15,7 @@ const Input = styled.input`
     color: palevioletred;
   }
 `;
-const Button = styled.button`
+export const Button = styled.button`
   background: transparent;
   font-size: 16px;
   border-radius: 3px;
@@ -36,14 +35,3 @@ const Button = styled.button`
     color: #ffffff;
   }
 `;
-
-const SearchInput = () => {
-  return (
-    <StyledSearchInput>
-      <Input type="text" placeholder="Search City" />
-      <Button primary>Search</Button>
-    </StyledSearchInput>
-  );
-};
-
-export default SearchInput;
