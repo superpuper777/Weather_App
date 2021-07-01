@@ -31,6 +31,9 @@
         "arrow-body-style": 0,
         "react/prop-types": 0,
         "no-unused-vars": 1,
-        "no-console": "off"
+        "no-console": "off",
+        "import/prefer-default-export": 0,
+        // "react/forbid-foreign-prop-types": 0,
+        "react/require-default-props": 0
     }
 }

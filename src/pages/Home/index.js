@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as S from './styled';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
 import WeatherList from './WeatherList';
 
-const Wrapper = styled.div`
-  padding: 0 6rem;
-`;
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState({});
   console.log(currentWeather);
   return (
-    <Wrapper>
+    <S.Wrapper>
       <SearchBar setCurrentWeather={setCurrentWeather} />
       <WeatherInfo currentWeather={currentWeather} />
       <WeatherList />
-    </Wrapper>
+    </S.Wrapper>
   );
 };
 
