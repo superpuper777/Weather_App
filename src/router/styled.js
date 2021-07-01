@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from './weather_logo.svg';
 
 export const Navigation = styled.ul`
   display: flex;
@@ -33,4 +34,11 @@ export const NavLink = styled(Link)`
   &:hover {
     color: #d4829e;
   }
+`;
+
+export const StyledLogo = styled(Logo)`
+  width: 50px;
+  height: 50px;
+  opacity: 0.75;
+  cursor: pointer;
 `;

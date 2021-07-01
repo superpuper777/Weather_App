@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { WiDayShowers } from 'weather-icons-react';
 import * as S from './styled';
 import Home from '../pages/Home';
 
@@ -9,7 +8,9 @@ const RouterComponent = () => {
     <Router>
       <S.Navigation>
         <S.NavigationItem>
-          <WiDayShowers size={46} color="palevioletred" />
+          <S.NavLink to="/">
+            <S.StyledLogo />
+          </S.NavLink>
         </S.NavigationItem>
         <S.NavigationItem>
           <S.NavLink to="/">Home</S.NavLink>

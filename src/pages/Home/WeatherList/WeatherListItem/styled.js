@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { WiNightAltShowers } from 'weather-icons-react';
 
 export const InfoText = styled.p`
   color: ${(props) => (props.desc ? 'gray' : 'palevioletred')};
@@ -8,3 +9,8 @@ export const InfoText = styled.p`
 export const WeatherWrapper = styled.div`
   display: flex;
 `;
+
+export const Icon = styled(WiNightAltShowers).attrs(() => ({
+  size: 46,
+  color: 'palevioletred',
+}))``;
