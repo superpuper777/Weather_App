@@ -6,11 +6,17 @@ import WeatherList from './WeatherList';
 
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState({});
-  console.log(currentWeather);
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   return (
     <S.Wrapper>
-      <SearchBar setCurrentWeather={setCurrentWeather} />
-      <WeatherInfo currentWeather={currentWeather} />
+      <SearchBar
+        setCurrentWeather={setCurrentWeather}
+        setLoading={setLoading}
+        setIsError={setIsError}
+      />
+      <WeatherInfo currentWeather={currentWeather} loading={loading} isError={isError} />
       <WeatherList />
     </S.Wrapper>
   );
