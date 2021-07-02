@@ -5,10 +5,10 @@ import SearchFilter from './SearchFilter';
 
 const SearchBar = () => {
   return (
-    <S.StyledSearchBar>
+    <S.SearchBarWrapper>
       <SearchInput />
       <SearchFilter />
-    </S.StyledSearchBar>
+    </S.SearchBarWrapper>
   );
 };
 

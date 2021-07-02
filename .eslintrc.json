@@ -32,7 +32,13 @@
         "react/prop-types": 0,
         "no-unused-vars": 1,
         "import/prefer-default-export": 0,
-        // "react/forbid-foreign-prop-types": 0,
-        "react/require-default-props": 0
+        "react/require-default-props": 0,
+        "padding-line-between-statements": [
+            "error",
+            { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+            { "blankLine": "always", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            { "blankLine": "always", "prev": "*", "next": "export" }
+          ]
     }
 }

@@ -41,7 +41,7 @@ export const Text = styled.p`
   margin: 0 2rem;
 `;
 
-export const Div = styled.div`
+export const InfoWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

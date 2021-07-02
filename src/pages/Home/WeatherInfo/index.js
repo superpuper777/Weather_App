@@ -12,7 +12,7 @@ const WeatherInfo = () => {
         <S.Title>30&#8451;</S.Title>
       </S.CurrentWeatherWrapper>
       <S.Description>Feels like 32&#8451;. Overcast clouds. Light breeze </S.Description>
-      <S.Div>
+      <S.InfoWrapper>
         <S.Text>0.18mm</S.Text>
         <S.Text>3.8m/s NNW</S.Text>
         <S.Text>1012 hPa</S.Text>
@@ -20,7 +20,7 @@ const WeatherInfo = () => {
         <S.Text>UV: 1</S.Text>
         <S.Text>Dew point: 24&#8451;</S.Text>
         <S.Text>Visibility: 10.0km</S.Text>
-      </S.Div>
+      </S.InfoWrapper>
     </S.MainWrapper>
   );
 };

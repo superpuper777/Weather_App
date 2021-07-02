@@ -7,9 +7,7 @@ const options = [
 ];
 
 const SearchFilter = () => {
-  return (
-    <S.StyledSelect placeholder="Temperature Unit" options={options} styles={S.customStyles} />
-  );
+  return <S.UnitSelect placeholder="Temperature Unit" options={options} styles={S.customStyles} />;
 };
 
 export default SearchFilter;
