@@ -6,11 +6,13 @@ import LoadingError from '../../../components/LoadingError';
 
 const upperCase = (str) => {
   if (!str) return str;
+
   return str[0].toUpperCase() + str.slice(1);
 };
 
 const WeatherInfo = ({ currentWeather, loading, isError }) => {
   const { name, main, weather, sys, visibility, wind } = currentWeather;
+
   if (loading) {
     return <LoadingSpinner />;
   }

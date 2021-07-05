@@ -5,14 +5,14 @@ import SearchFilter from './SearchFilter';
 
 const SearchBar = ({ setCurrentWeather, setLoading, setIsError }) => {
   return (
-    <S.StyledSearchBar>
+    <S.SearchBarWrapper>
       <SearchInput
         setCurrentWeather={setCurrentWeather}
         setLoading={setLoading}
         setIsError={setIsError}
       />
       <SearchFilter />
-    </S.StyledSearchBar>
+    </S.SearchBarWrapper>
   );
 };
 

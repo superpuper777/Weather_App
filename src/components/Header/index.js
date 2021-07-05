@@ -1,12 +1,20 @@
 import React from 'react';
 import * as S from './styled';
-import RouterComponent from '../../router';
 
 const Header = () => {
   return (
-    <S.StyledHeader>
-      <RouterComponent />
-    </S.StyledHeader>
+    <S.Wrapper>
+      <S.Navigation>
+        <S.NavigationItem>
+          <S.NavLink to="/">
+            <S.StyledLogo />
+          </S.NavLink>
+        </S.NavigationItem>
+        <S.NavigationItem>
+          <S.NavLink to="/">Home</S.NavLink>
+        </S.NavigationItem>
+      </S.Navigation>
+    </S.Wrapper>
   );
 };
 

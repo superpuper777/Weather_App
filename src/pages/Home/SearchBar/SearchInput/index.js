@@ -6,12 +6,14 @@ const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
 
 const SearchInput = ({ setCurrentWeather, setLoading, setIsError }) => {
   const [query, setQuery] = useState('Minsk');
+
   const [searchTerm, setSearchTerm] = useState('Minsk');
 
   const changeLocation = () => {
     setSearchTerm(query);
     setQuery('');
   };
+
   useEffect(() => {
     if (searchTerm) {
       setLoading(true);
@@ -21,6 +23,7 @@ const SearchInput = ({ setCurrentWeather, setLoading, setIsError }) => {
           const response = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}&units=metric`,
           );
+
           console.log(response.data);
           setCurrentWeather(response.data);
         } catch (error) {
@@ -29,21 +32,23 @@ const SearchInput = ({ setCurrentWeather, setLoading, setIsError }) => {
         }
         setLoading(false);
       };
+
       getWeather();
     }
   }, [searchTerm, setCurrentWeather, setLoading, setIsError]);
+
   return (
-    <S.StyledSearchInput>
-      <S.Input
+    <S.SearchInputWrapper>
+      <S.SearchInput
         type="text"
         placeholder="Search City"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <S.Button primary onClick={changeLocation}>
+      <S.SearchButton primary onClick={changeLocation}>
         Search
-      </S.Button>
-    </S.StyledSearchInput>
+      </S.SearchButton>
+    </S.SearchInputWrapper>
   );
 };
 

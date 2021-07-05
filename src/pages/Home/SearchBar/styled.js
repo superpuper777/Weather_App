@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSearchBar = styled.div`
+export const SearchBarWrapper = styled.div`
   padding: 0 2rem;
   display: flex;
   justify-content: center;

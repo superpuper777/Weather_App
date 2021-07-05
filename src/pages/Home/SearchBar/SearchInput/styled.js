@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export const StyledSearchInput = styled.div`
+export const SearchInputWrapper = styled.div`
   margin: 1em;
   display: flex;
   justify-content: center;
 `;
 
-export const Input = styled.input`
+export const SearchInput = styled.input`
   font-size: 18px;
   padding: 10px;
   border: 2px solid palevioletred;
@@ -17,7 +17,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Button = styled.button`
+export const SearchButton = styled.button`
   background: transparent;
   font-size: 16px;
   border-radius: 3px;

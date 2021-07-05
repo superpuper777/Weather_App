@@ -6,7 +6,9 @@ import WeatherList from './WeatherList';
 
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState({});
+
   const [loading, setLoading] = useState(false);
+
   const [isError, setIsError] = useState(false);
 
   return (
