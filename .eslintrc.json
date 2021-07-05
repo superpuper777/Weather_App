@@ -1,44 +1,34 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "parser": "babel-eslint",
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "prettier"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier",
-        "better-styled-components"
-    ],
-    "rules": {
-        "prettier/prettier": "error",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "arrow-body-style": 0,
-        "react/prop-types": 0,
-        "no-unused-vars": 1,
-        "import/prefer-default-export": 0,
-        "react/require-default-props": 0,
-        "padding-line-between-statements": [
-            "error",
-            { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
-            { "blankLine": "always", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
-            { "blankLine": "always", "prev": "*", "next": "return" },
-            { "blankLine": "always", "prev": "*", "next": "export" }
-          ]
-    }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "better-styled-components"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "arrow-body-style": 0,
+    "import/prefer-default-export": 0,
+    "react/require-default-props": 0,
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "export" }
+    ]
+  }
 }
