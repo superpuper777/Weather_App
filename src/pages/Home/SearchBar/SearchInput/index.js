@@ -33,6 +33,24 @@ const SearchInput = ({ setCurrentWeather, setLoading, setIsError }) => {
         setLoading(false);
       };
 
+      setLoading(true);
+      setIsError(false);
+      const getForecast = async () => {
+        try {
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${ApiKey}`,
+          );
+
+          console.log(response.data);
+        } catch (error) {
+          setIsError(true);
+          console.log('error');
+        }
+        setLoading(false);
+      };
+
+      getForecast();
+
       getWeather();
     }
   }, [searchTerm, setCurrentWeather, setLoading, setIsError]);
