@@ -7,6 +7,8 @@ import WeatherList from './WeatherList';
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState({});
 
+  const [selectedUnit, setSelectedUnit] = useState({ value: 'metric' });
+
   const [loading, setLoading] = useState(false);
 
   const [isError, setIsError] = useState(false);
@@ -15,6 +17,8 @@ const Home = () => {
     <S.Wrapper>
       <SearchBar
         setCurrentWeather={setCurrentWeather}
+        selectedUnit={selectedUnit}
+        setSelectedUnit={setSelectedUnit}
         setLoading={setLoading}
         setIsError={setIsError}
       />

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as S from './styled';
 
 const options = [
@@ -6,8 +7,19 @@ const options = [
   { value: 'imperial', label: 'Imperial: °F, mph' },
 ];
 
-const SearchFilter = () => {
-  return <S.UnitSelect placeholder="Temperature Unit" options={options} styles={S.customStyles} />;
+const SearchFilter = ({ setSelectedUnit }) => {
+  return (
+    <S.UnitSelect
+      placeholder="Temperature Unit"
+      options={options}
+      onChange={setSelectedUnit}
+      styles={S.customStyles}
+    />
+  );
+};
+
+SearchFilter.propTypes = {
+  setSelectedUnit: PropTypes.func.isRequired,
 };
 
 export default SearchFilter;
