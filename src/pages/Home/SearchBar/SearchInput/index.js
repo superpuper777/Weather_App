@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+
 import * as S from './styled';
 
 const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
@@ -16,26 +17,28 @@ const SearchInput = ({ selectedUnit, setCurrentWeather, setLoading, setIsError }
   };
 
   useEffect(() => {
-    if (searchTerm) {
-      setLoading(true);
-      setIsError(false);
-      const getWeather = async () => {
-        try {
-          const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
-          );
-
-          console.log(response.data);
-          setCurrentWeather(response.data);
-        } catch (error) {
-          setIsError(true);
-          console.log('error');
-        }
-        setLoading(false);
-      };
-
-      getWeather();
+    if (!searchTerm) {
+      return;
     }
+    setLoading(true);
+    setIsError(false);
+    const getWeather = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
+        );
+
+        console.log(response.data);
+        setCurrentWeather(response.data);
+      } catch (error) {
+        setIsError(true);
+        console.log('error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getWeather();
   }, [searchTerm, selectedUnit, setCurrentWeather, setLoading, setIsError]);
 
   return (

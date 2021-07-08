@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { WiNightAltShowers } from 'weather-icons-react';
+
 import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import LoadingError from '../../../components/LoadingError';

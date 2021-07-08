@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import * as S from './styled';
 import SearchInput from './SearchInput';
 import SearchFilter from './SearchFilter';
