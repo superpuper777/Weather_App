@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { WiNightAltShowers } from 'weather-icons-react';
+
 import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import LoadingError from '../../../components/LoadingError';
@@ -11,8 +13,6 @@ const upperCase = (str) => {
 };
 
 const WeatherInfo = ({ currentWeather, loading, isError }) => {
-  const { name, main, weather, sys, visibility, wind } = currentWeather;
-
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -24,29 +24,45 @@ const WeatherInfo = ({ currentWeather, loading, isError }) => {
       <S.MainWrapper>
         <S.StyledDate>{new Date().toDateString()} </S.StyledDate>
         <S.Title>
-          {name}, {sys.country}
+          {currentWeather.name}, {currentWeather.sys.country}
         </S.Title>
         <S.CurrentWeatherWrapper>
           <WiNightAltShowers size={46} color="palevioletred" />
-          <S.Title>{Math.round(main.temp)}&#8451;</S.Title>
+          <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
         </S.CurrentWeatherWrapper>
         <S.Description>
-          Feels like {Math.round(main.feels_like)}&#8451;. {upperCase(weather[0].description)}.
+          Feels like {Math.round(currentWeather.main.feels_like)}&deg;.{' '}
+          {upperCase(currentWeather.weather[0].description)}.
         </S.Description>
         <S.InfoWrapper>
-          <S.Text>0.18mm</S.Text>
-          <S.Text>{wind.speed}m/s NNW</S.Text>
-          <S.Text>{main.pressure} hPa</S.Text>
-          <S.Text>Humidity: {main.humidity}%</S.Text>
-          <S.Text>UV: 1</S.Text>
-          <S.Text>Dew point: 24&#8451;</S.Text>
-          <S.Text>Visibility: {(visibility / 1000).toFixed(1)}km</S.Text>
+          <S.Text>{currentWeather.wind.speed}m/s</S.Text>
+          <S.Text>{currentWeather.main.pressure} hPa</S.Text>
+          <S.Text>Humidity: {currentWeather.main.humidity}%</S.Text>
+          <S.Text>Visibility: {(currentWeather.visibility / 1000).toFixed(1)}km</S.Text>
         </S.InfoWrapper>
       </S.MainWrapper>
     );
   }
 
   return <div>Weather api doesn`&apos;`t work</div>; /* how to do without it? */
+};
+
+WeatherInfo.propTypes = {
+  currentWeather: PropTypes.shape({
+    name: PropTypes.string,
+    main: PropTypes.shape({
+      feels_like: PropTypes.number.isRequired,
+      humidity: PropTypes.number.isRequired,
+      pressure: PropTypes.number.isRequired,
+      temp: PropTypes.number.isRequired,
+    }),
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({ description: PropTypes.string.isRequired, icon: PropTypes.string }),
+    ),
+    sys: PropTypes.shape({ country: PropTypes.string.isRequired }),
+    visibility: PropTypes.number,
+    wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
+  }),
 };
 
 export default WeatherInfo;

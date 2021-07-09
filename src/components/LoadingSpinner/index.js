@@ -1,8 +1,9 @@
 import React from 'react';
+
 import * as S from './styled';
 
 const LoadingSpinner = () => {
-  return <S.StyledSpinner css={S.override} />;
+  return <S.Spinner />;
 };
 
 export default LoadingSpinner;
