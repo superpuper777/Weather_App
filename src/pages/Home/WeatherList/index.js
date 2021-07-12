@@ -32,7 +32,9 @@ const WeatherList = ({ listOfWeather, loading, isError }) => {
 };
 
 WeatherList.propTypes = {
-  listOfWeather: PropTypes.arrayOf(PropTypes.object),
+  listOfWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default WeatherList;

@@ -63,6 +63,8 @@ WeatherInfo.propTypes = {
     visibility: PropTypes.number,
     wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
   }),
+  loading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
 export default WeatherInfo;

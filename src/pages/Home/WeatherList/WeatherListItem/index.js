@@ -52,7 +52,7 @@ WeatherListItem.propTypes = {
   weather: PropTypes.arrayOf(
     PropTypes.shape({ description: PropTypes.string.isRequired, icon: PropTypes.string }),
   ),
-  // visibility: PropTypes.number,
+  visibility: PropTypes.number,
   wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
 };
 

@@ -6,6 +6,8 @@ import * as S from './styled';
 
 const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
 
+const url = 'https://api.openweathermap.org/data/2.5/';
+
 const SearchInput = ({
   selectedUnit,
   setCurrentWeather,
@@ -31,7 +33,7 @@ const SearchInput = ({
     const getWeather = async () => {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
+          `${url}weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
         console.log(response.data);
@@ -47,7 +49,7 @@ const SearchInput = ({
     const getForecast = async () => {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
+          `${url}forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
         console.log(response.data);
