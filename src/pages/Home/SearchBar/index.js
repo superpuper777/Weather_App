@@ -7,6 +7,7 @@ import SearchFilter from './SearchFilter';
 
 const SearchBar = ({
   setCurrentWeather,
+  setListOfWeather,
   selectedUnit,
   setSelectedUnit,
   setLoading,
@@ -16,6 +17,7 @@ const SearchBar = ({
     <S.SearchBarWrapper>
       <SearchInput
         setCurrentWeather={setCurrentWeather}
+        setListOfWeather={setListOfWeather}
         setLoading={setLoading}
         setIsError={setIsError}
         selectedUnit={selectedUnit}
@@ -27,7 +29,8 @@ const SearchBar = ({
 
 SearchBar.propTypes = {
   setCurrentWeather: PropTypes.func,
-  selectedUnit: PropTypes.func,
+  setListOfWeather: PropTypes.func.isRequired,
+  selectedUnit: PropTypes.shape({ value: PropTypes.string }).isRequired,
   setSelectedUnit: PropTypes.func,
   setLoading: PropTypes.func,
   setIsError: PropTypes.func,

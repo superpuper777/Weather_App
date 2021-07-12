@@ -8,6 +8,8 @@ import WeatherList from './WeatherList';
 const Home = () => {
   const [currentWeather, setCurrentWeather] = useState({});
 
+  const [listOfWeather, setListOfWeather] = useState([]);
+
   const [selectedUnit, setSelectedUnit] = useState({ value: 'metric' });
 
   const [loading, setLoading] = useState(false);
@@ -18,13 +20,14 @@ const Home = () => {
     <S.Wrapper>
       <SearchBar
         setCurrentWeather={setCurrentWeather}
+        setListOfWeather={setListOfWeather}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
         setLoading={setLoading}
         setIsError={setIsError}
       />
       <WeatherInfo currentWeather={currentWeather} loading={loading} isError={isError} />
-      <WeatherList />
+      <WeatherList listOfWeather={listOfWeather} loading={loading} isError={isError} />
     </S.Wrapper>
   );
 };

@@ -6,7 +6,13 @@ import * as S from './styled';
 
 const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
 
-const SearchInput = ({ selectedUnit, setCurrentWeather, setLoading, setIsError }) => {
+const SearchInput = ({
+  selectedUnit,
+  setCurrentWeather,
+  setListOfWeather,
+  setLoading,
+  setIsError,
+}) => {
   const [query, setQuery] = useState('Minsk');
 
   const [searchTerm, setSearchTerm] = useState('Minsk');
@@ -41,10 +47,11 @@ const SearchInput = ({ selectedUnit, setCurrentWeather, setLoading, setIsError }
     const getForecast = async () => {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${ApiKey}`,
+          `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
         console.log(response.data);
+        setListOfWeather(response.data.list);
       } catch (error) {
         setIsError(true);
         console.log('error');
@@ -56,7 +63,7 @@ const SearchInput = ({ selectedUnit, setCurrentWeather, setLoading, setIsError }
     getForecast();
 
     getWeather();
-  }, [searchTerm, selectedUnit, setCurrentWeather, setLoading, setIsError]);
+  }, [searchTerm, selectedUnit, setCurrentWeather, setListOfWeather, setLoading, setIsError]);
 
   return (
     <S.SearchInputWrapper>
@@ -76,6 +83,7 @@ const SearchInput = ({ selectedUnit, setCurrentWeather, setLoading, setIsError }
 SearchInput.propTypes = {
   selectedUnit: PropTypes.shape({ value: PropTypes.string, label: PropTypes.string }).isRequired,
   setCurrentWeather: PropTypes.func.isRequired,
+  setListOfWeather: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
   setIsError: PropTypes.func.isRequired,
 };

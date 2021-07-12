@@ -1,42 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as S from './styled';
 import WeatherListItem from './WeatherListItem';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import LoadingError from '../../../components/LoadingError';
 
-const infoItems = [
-  {
-    id: 1,
-    date: 'Sat, Jun 26',
-    temperature: '26 / 17°C',
-    description: 'Light rain. Moderate breeze.',
-  },
-  {
-    id: 2,
-    date: 'Sat, Jun 26',
-    temperature: '26 / 17°C',
-    description: 'Light rain. Moderate breeze.',
-  },
-  {
-    id: 3,
-    date: 'Sat, Jun 26',
-    temperature: '26 / 17°C',
-    description: 'Light rain. Moderate breeze.',
-  },
-];
+const WeatherList = ({ listOfWeather, loading, isError }) => {
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  if (isError) {
+    return <LoadingError />;
+  }
+  if (!listOfWeather) {
+    return;
+  }
 
-const WeatherList = () => {
   return (
     <S.WeatherWrapper>
       <S.Title>5-day forecast</S.Title>
       <S.WeatherList>
-        {infoItems.map((item) => (
-          <S.WeatherListItem key={item.id}>
-            <WeatherListItem item={item} />
+        {listOfWeather.map((item) => (
+          <S.WeatherListItem key={item.dt}>
+            <WeatherListItem loading={loading} isError={isError} item={item} />
           </S.WeatherListItem>
         ))}
       </S.WeatherList>
     </S.WeatherWrapper>
   );
+};
+
+WeatherList.propTypes = {
+  listOfWeather: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default WeatherList;

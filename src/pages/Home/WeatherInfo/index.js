@@ -6,7 +6,7 @@ import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import LoadingError from '../../../components/LoadingError';
 
-const upperCase = (str) => {
+export const upperCase = (str) => {
   if (!str) return str;
 
   return str[0].toUpperCase() + str.slice(1);
