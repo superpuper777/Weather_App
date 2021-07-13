@@ -5,12 +5,7 @@ import { WiNightAltShowers } from 'weather-icons-react';
 import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import LoadingError from '../../../components/LoadingError';
-
-export const upperCase = (str) => {
-  if (!str) return str;
-
-  return str[0].toUpperCase() + str.slice(1);
-};
+import { upperCase } from '../../../utils';
 
 const WeatherInfo = ({ currentWeather, loading, isError }) => {
   if (loading) {

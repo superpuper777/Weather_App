@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import * as S from './styled';
-import { upperCase } from '../../WeatherInfo';
-
-const getFormatedDate = (txtDate) => {
-  const formatedDate = new Date(txtDate).toDateString().split(' ');
-
-  return `${formatedDate[0]}, ${formatedDate[1]} ${formatedDate[2]}`;
-};
+import { upperCase, getFormatedDate } from '../../../../utils';
 
 const WeatherListItem = ({ item }) => {
   return (
