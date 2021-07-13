@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as S from './styled';
 import { upperCase } from '../../WeatherInfo';
+import { iconUrl } from '../../SearchBar/SearchInput';
 
 const getFormatedDate = (txtDate) => {
   const formatedDate = new Date(txtDate).toDateString().split(' ');
@@ -10,14 +11,18 @@ const getFormatedDate = (txtDate) => {
   return `${formatedDate[0]}, ${formatedDate[1]} ${formatedDate[2]}`;
 };
 
-const WeatherListItem = ({ item, weatherIcon }) => {
+const WeatherListItem = ({ item }) => {
+  const icon = `${iconUrl}${item.weather[0].icon}.png`;
+
   return (
     <S.Wrapper>
       <S.InfoText date>{getFormatedDate(item.dt_txt)}</S.InfoText>
       <S.WeatherWrapper>
         <S.MainInfoWrapper>
           {/* <S.Icon /> */}
-          <img src={weatherIcon} alt="weatherIcon" />
+          <S.ImageWrapper>
+            <img src={icon} alt="weatherIcon" />
+          </S.ImageWrapper>
           <S.MainTextWrapper>
             <S.InfoText>{upperCase(item.weather[0].description)}</S.InfoText>
             <S.InfoText desc>
@@ -49,13 +54,12 @@ WeatherListItem.propTypes = {
       temp_min: PropTypes.number.isRequired,
       temp_max: PropTypes.number.isRequired,
     }),
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({ description: PropTypes.string.isRequired, icon: PropTypes.string }),
+    ),
+    visibility: PropTypes.number,
+    wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
   }),
-  weather: PropTypes.arrayOf(
-    PropTypes.shape({ description: PropTypes.string.isRequired, icon: PropTypes.string }),
-  ),
-  visibility: PropTypes.number,
-  wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
-  weatherIcon: PropTypes.string.isRequired,
 };
 
 export default WeatherListItem;

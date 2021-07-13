@@ -17,6 +17,8 @@ export const WeatherWrapper = styled.div`
   flex-direction: column;
 `;
 
+export const ImageWrapper = styled.div``;
+
 export const MainTextWrapper = styled.div`
   display: flex;
   flex-direction: column;

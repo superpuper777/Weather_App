@@ -6,7 +6,7 @@ import WeatherListItem from './WeatherListItem';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import LoadingError from '../../../components/LoadingError';
 
-const WeatherList = ({ listOfWeather, weatherIcon, loading, isError }) => {
+const WeatherList = ({ listOfWeather, loading, isError }) => {
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -23,12 +23,7 @@ const WeatherList = ({ listOfWeather, weatherIcon, loading, isError }) => {
       <S.WeatherList>
         {listOfWeather.map((item) => (
           <S.WeatherListItem key={item.dt}>
-            <WeatherListItem
-              weatherIcon={weatherIcon}
-              loading={loading}
-              isError={isError}
-              item={item}
-            />
+            <WeatherListItem loading={loading} isError={isError} item={item} />
           </S.WeatherListItem>
         ))}
       </S.WeatherList>
@@ -38,7 +33,6 @@ const WeatherList = ({ listOfWeather, weatherIcon, loading, isError }) => {
 
 WeatherList.propTypes = {
   listOfWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
-  weatherIcon: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
 };

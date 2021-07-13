@@ -9,7 +9,6 @@ export const Title = styled.h1`
 export const MainWrapper = styled.section`
   width: 40%;
   padding: 4em;
-  background: papayawhip;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +16,9 @@ export const MainWrapper = styled.section`
   margin-bottom: 1rem;
 `;
 
-export const StyledDate = styled.span`
+export const ImageWrapper = styled.div``;
+
+export const Date = styled.span`
   color: palevioletred;
 `;
 

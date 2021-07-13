@@ -24,7 +24,6 @@ const Home = () => {
         setCurrentWeather={setCurrentWeather}
         setListOfWeather={setListOfWeather}
         setWeatherIcon={setWeatherIcon}
-        weatherIcon={weatherIcon}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
         setLoading={setLoading}
@@ -36,12 +35,7 @@ const Home = () => {
         loading={loading}
         isError={isError}
       />
-      <WeatherList
-        listOfWeather={listOfWeather}
-        weatherIcon={weatherIcon}
-        loading={loading}
-        isError={isError}
-      />
+      <WeatherList listOfWeather={listOfWeather} loading={loading} isError={isError} />
     </S.Wrapper>
   );
 };

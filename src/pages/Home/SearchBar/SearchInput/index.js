@@ -4,9 +4,11 @@ import axios from 'axios';
 
 import * as S from './styled';
 
-const ApiKey = 'e460fcebd69acf7030cbeaced98d6e0b';
+const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
 
 const url = 'https://api.openweathermap.org/data/2.5/';
+
+export const iconUrl = 'https://openweathermap.org/img/wn/';
 
 const SearchInput = ({
   selectedUnit,
@@ -15,7 +17,6 @@ const SearchInput = ({
   setWeatherIcon,
   setLoading,
   setIsError,
-  weatherIcon,
 }) => {
   const [query, setQuery] = useState('Minsk');
 
@@ -38,9 +39,10 @@ const SearchInput = ({
           `${url}weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
-        console.log(response.data);
+        const iconApi = await axios.get(`${iconUrl}${response.data.weather[0].icon}.png`);
+
         setCurrentWeather(response.data);
-        setWeatherIcon(response.data.weather[0].icon);
+        setWeatherIcon(iconApi.config.url);
       } catch (error) {
         setIsError(true);
         console.log('error');
@@ -55,22 +57,7 @@ const SearchInput = ({
           `${url}forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
-        console.log(response.data);
         setListOfWeather(response.data.list);
-        setWeatherIcon(response.data.list.weather[0].icon);
-      } catch (error) {
-        setIsError(true);
-        console.log('error');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const getWeatherIcon = async () => {
-      try {
-        const response = await axios.get(`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
-
-        console.log(response);
       } catch (error) {
         setIsError(true);
         console.log('error');
@@ -82,8 +69,6 @@ const SearchInput = ({
     getForecast();
 
     getWeather();
-
-    getWeatherIcon();
   }, [
     searchTerm,
     selectedUnit,
@@ -92,7 +77,6 @@ const SearchInput = ({
     setWeatherIcon,
     setLoading,
     setIsError,
-    weatherIcon,
   ]);
 
   return (
@@ -117,7 +101,6 @@ SearchInput.propTypes = {
   setWeatherIcon: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
   setIsError: PropTypes.func.isRequired,
-  weatherIcon: PropTypes.string.isRequired,
 };
 
 export default SearchInput;

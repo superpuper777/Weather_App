@@ -13,7 +13,6 @@ const SearchBar = ({
   setSelectedUnit,
   setLoading,
   setIsError,
-  weatherIcon,
 }) => {
   return (
     <S.SearchBarWrapper>
@@ -24,7 +23,6 @@ const SearchBar = ({
         setLoading={setLoading}
         setIsError={setIsError}
         selectedUnit={selectedUnit}
-        weatherIcon={weatherIcon}
       />
       <SearchFilter setSelectedUnit={setSelectedUnit} />
     </S.SearchBarWrapper>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { WiNightAltShowers } from 'weather-icons-react';
 
 import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
@@ -22,13 +21,14 @@ const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
   if (Object.keys(currentWeather).length !== 0) {
     return (
       <S.MainWrapper>
-        <S.StyledDate>{new Date().toDateString()} </S.StyledDate>
+        <S.Date>{new Date().toDateString()} </S.Date>
         <S.Title>
           {currentWeather.name}, {currentWeather.sys.country}
         </S.Title>
         <S.CurrentWeatherWrapper>
-          {/* <WiNightAltShowers size={46} color="palevioletred" /> */}
-          <img src={weatherIcon} alt="weatherIcon" />
+          <S.ImageWrapper>
+            <img src={weatherIcon} alt="weatherIcon" />
+          </S.ImageWrapper>
           <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
         </S.CurrentWeatherWrapper>
         <S.Description>
