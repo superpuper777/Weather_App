@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { WiNightAltShowers } from 'weather-icons-react';
+// import { WiNightAltShowers } from 'weather-icons-react';
 
 import * as S from './styled';
 import LoadingSpinner from '../../../components/LoadingSpinner';
@@ -12,7 +12,7 @@ export const upperCase = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
 
-const WeatherInfo = ({ currentWeather, loading, isError }) => {
+const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -27,7 +27,8 @@ const WeatherInfo = ({ currentWeather, loading, isError }) => {
           {currentWeather.name}, {currentWeather.sys.country}
         </S.Title>
         <S.CurrentWeatherWrapper>
-          <WiNightAltShowers size={46} color="palevioletred" />
+          {/* <WiNightAltShowers size={46} color="palevioletred" /> */}
+          <img src={weatherIcon} alt="weatherIcon" />
           <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
         </S.CurrentWeatherWrapper>
         <S.Description>
@@ -63,6 +64,7 @@ WeatherInfo.propTypes = {
     visibility: PropTypes.number,
     wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
   }),
+  weatherIcon: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
 };

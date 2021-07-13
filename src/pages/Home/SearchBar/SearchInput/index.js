@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import * as S from './styled';
 
-const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
+const ApiKey = 'e460fcebd69acf7030cbeaced98d6e0b';
 
 const url = 'https://api.openweathermap.org/data/2.5/';
 
@@ -12,8 +12,10 @@ const SearchInput = ({
   selectedUnit,
   setCurrentWeather,
   setListOfWeather,
+  setWeatherIcon,
   setLoading,
   setIsError,
+  weatherIcon,
 }) => {
   const [query, setQuery] = useState('Minsk');
 
@@ -38,6 +40,7 @@ const SearchInput = ({
 
         console.log(response.data);
         setCurrentWeather(response.data);
+        setWeatherIcon(response.data.weather[0].icon);
       } catch (error) {
         setIsError(true);
         console.log('error');
@@ -49,11 +52,25 @@ const SearchInput = ({
     const getForecast = async () => {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
+          `${url}forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
         );
 
         console.log(response.data);
         setListOfWeather(response.data.list);
+        setWeatherIcon(response.data.list.weather[0].icon);
+      } catch (error) {
+        setIsError(true);
+        console.log('error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const getWeatherIcon = async () => {
+      try {
+        const response = await axios.get(`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+
+        console.log(response);
       } catch (error) {
         setIsError(true);
         console.log('error');
@@ -65,7 +82,18 @@ const SearchInput = ({
     getForecast();
 
     getWeather();
-  }, [searchTerm, selectedUnit, setCurrentWeather, setListOfWeather, setLoading, setIsError]);
+
+    getWeatherIcon();
+  }, [
+    searchTerm,
+    selectedUnit,
+    setCurrentWeather,
+    setListOfWeather,
+    setWeatherIcon,
+    setLoading,
+    setIsError,
+    weatherIcon,
+  ]);
 
   return (
     <S.SearchInputWrapper>
@@ -86,8 +114,10 @@ SearchInput.propTypes = {
   selectedUnit: PropTypes.shape({ value: PropTypes.string, label: PropTypes.string }).isRequired,
   setCurrentWeather: PropTypes.func.isRequired,
   setListOfWeather: PropTypes.func.isRequired,
+  setWeatherIcon: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
   setIsError: PropTypes.func.isRequired,
+  weatherIcon: PropTypes.string.isRequired,
 };
 
 export default SearchInput;

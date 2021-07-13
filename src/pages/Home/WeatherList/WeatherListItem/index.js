@@ -10,13 +10,14 @@ const getFormatedDate = (txtDate) => {
   return `${formatedDate[0]}, ${formatedDate[1]} ${formatedDate[2]}`;
 };
 
-const WeatherListItem = ({ item }) => {
+const WeatherListItem = ({ item, weatherIcon }) => {
   return (
     <S.Wrapper>
       <S.InfoText date>{getFormatedDate(item.dt_txt)}</S.InfoText>
       <S.WeatherWrapper>
         <S.MainInfoWrapper>
-          <S.Icon />
+          {/* <S.Icon /> */}
+          <img src={weatherIcon} alt="weatherIcon" />
           <S.MainTextWrapper>
             <S.InfoText>{upperCase(item.weather[0].description)}</S.InfoText>
             <S.InfoText desc>
@@ -54,6 +55,7 @@ WeatherListItem.propTypes = {
   ),
   visibility: PropTypes.number,
   wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
+  weatherIcon: PropTypes.string.isRequired,
 };
 
 export default WeatherListItem;
