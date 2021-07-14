@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 import * as S from './styled';
-
-const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
-
-const url = 'https://api.openweathermap.org/data/2.5/';
+import { fetchWeather, fetchForecast } from '../../../../services/weather';
 
 const SearchInput = ({
   selectedUnit,
@@ -32,9 +28,7 @@ const SearchInput = ({
     setIsError(false);
     const getWeather = async () => {
       try {
-        const response = await axios.get(
-          `${url}weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
-        );
+        const response = await fetchWeather(searchTerm, selectedUnit.value);
 
         console.log(response.data);
         setCurrentWeather(response.data);
@@ -48,9 +42,7 @@ const SearchInput = ({
 
     const getForecast = async () => {
       try {
-        const response = await axios.get(
-          `${url}forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
-        );
+        const response = await fetchForecast(searchTerm, selectedUnit.value);
 
         console.log(response.data);
         setListOfWeather(response.data.list);
