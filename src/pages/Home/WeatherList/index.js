@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as S from './styled';
+import LoadingSpinner from 'components/LoadingSpinner';
+import LoadingError from 'components/LoadingError';
 import WeatherListItem from './WeatherListItem';
-import LoadingSpinner from '../../../components/LoadingSpinner';
-import LoadingError from '../../../components/LoadingError';
+import * as S from './styled';
 
 const WeatherList = ({ listOfWeather, loading, isError }) => {
   if (loading) {

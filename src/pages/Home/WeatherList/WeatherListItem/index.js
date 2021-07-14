@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { upperCase, getFormatedDate } from 'utils';
 import * as S from './styled';
-import { upperCase, getFormatedDate } from '../../../../utils';
 
 const WeatherListItem = ({ item }) => {
   return (

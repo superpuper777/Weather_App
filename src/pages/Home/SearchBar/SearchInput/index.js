@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { fetchWeather, fetchForecast } from 'services/weather';
 import * as S from './styled';
-import { fetchWeather, fetchForecast } from '../../../../services/weather';
 
 const SearchInput = ({
   selectedUnit,
