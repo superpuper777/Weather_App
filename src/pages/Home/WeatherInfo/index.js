@@ -14,7 +14,7 @@ const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
     return <LoadingError />;
   }
   if (Object.keys(currentWeather).length === 0) {
-    return;
+    return null;
   }
 
   return (
