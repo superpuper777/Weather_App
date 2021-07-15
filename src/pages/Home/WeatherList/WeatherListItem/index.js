@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { upperCase, getFormatedDate } from 'utils';
 import * as S from './styled';
-import { upperCase } from '../../WeatherInfo';
 import { iconUrl } from '../../SearchBar/SearchInput';
-
-const getFormatedDate = (txtDate) => {
-  const formatedDate = new Date(txtDate).toDateString().split(' ');
-
-  return `${formatedDate[0]}, ${formatedDate[1]} ${formatedDate[2]}`;
-};
 
 const WeatherListItem = ({ item }) => {
   const icon = `${iconUrl}${item.weather[0].icon}.png`;
@@ -19,7 +13,6 @@ const WeatherListItem = ({ item }) => {
       <S.InfoText date>{getFormatedDate(item.dt_txt)}</S.InfoText>
       <S.WeatherWrapper>
         <S.MainInfoWrapper>
-          {/* <S.Icon /> */}
           <S.ImageWrapper>
             <img src={icon} alt="weatherIcon" />
           </S.ImageWrapper>

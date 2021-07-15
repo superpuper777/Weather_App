@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import { fetchWeather, fetchForecast } from 'services/weather';
 import * as S from './styled';
-
-const ApiKey = 'b7e2a93dd815c83eb49c60c0960d9732';
-
-const url = 'https://api.openweathermap.org/data/2.5/';
 
 export const iconUrl = 'https://openweathermap.org/img/wn/';
 
@@ -35,9 +32,7 @@ const SearchInput = ({
     setIsError(false);
     const getWeather = async () => {
       try {
-        const response = await axios.get(
-          `${url}weather?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
-        );
+        const response = await fetchWeather(searchTerm, selectedUnit.value);
 
         const iconApi = await axios.get(`${iconUrl}${response.data.weather[0].icon}.png`);
 
@@ -53,9 +48,7 @@ const SearchInput = ({
 
     const getForecast = async () => {
       try {
-        const response = await axios.get(
-          `${url}forecast?q=${searchTerm}&appid=${ApiKey}&units=${selectedUnit.value}`,
-        );
+        const response = await fetchForecast(searchTerm, selectedUnit.value);
 
         setListOfWeather(response.data.list);
       } catch (error) {

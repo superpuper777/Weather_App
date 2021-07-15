@@ -1,7 +1,7 @@
 import ClipLoader from 'react-spinners/ClipLoader';
 import styled from 'styled-components';
 
-export const SpinnerWrapper = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;

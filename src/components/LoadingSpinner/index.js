@@ -4,9 +4,9 @@ import * as S from './styled';
 
 const LoadingSpinner = () => {
   return (
-    <S.SpinnerWrapper>
+    <S.Wrapper>
       <S.Spinner />
-    </S.SpinnerWrapper>
+    </S.Wrapper>
   );
 };
 

@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LoadingSpinner from 'components/LoadingSpinner';
+import LoadingError from 'components/LoadingError';
+import { upperCase } from 'utils';
 import * as S from './styled';
-import LoadingSpinner from '../../../components/LoadingSpinner';
-import LoadingError from '../../../components/LoadingError';
-
-export const upperCase = (str) => {
-  if (!str) return str;
-
-  return str[0].toUpperCase() + str.slice(1);
-};
 
 const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
   if (loading) {

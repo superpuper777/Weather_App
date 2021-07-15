@@ -40,8 +40,3 @@ export const Text = styled.p`
   font-size: 12px;
   margin: 0 1rem;
 `;
-
-export const Icon = styled(WiNightAltShowers).attrs(() => ({
-  size: 46,
-  color: 'palevioletred',
-}))``;
