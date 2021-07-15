@@ -13,34 +13,34 @@ const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
   if (isError) {
     return <LoadingError />;
   }
-  if (Object.keys(currentWeather).length !== 0) {
-    return (
-      <S.MainWrapper>
-        <S.Date>{new Date().toDateString()} </S.Date>
-        <S.Title>
-          {currentWeather.name}, {currentWeather.sys.country}
-        </S.Title>
-        <S.CurrentWeatherWrapper>
-          <S.ImageWrapper>
-            <img src={weatherIcon} alt="weatherIcon" />
-          </S.ImageWrapper>
-          <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
-        </S.CurrentWeatherWrapper>
-        <S.Description>
-          Feels like {Math.round(currentWeather.main.feels_like)}&deg;.{' '}
-          {upperCase(currentWeather.weather[0].description)}.
-        </S.Description>
-        <S.InfoWrapper>
-          <S.Text>{currentWeather.wind.speed}m/s</S.Text>
-          <S.Text>{currentWeather.main.pressure} hPa</S.Text>
-          <S.Text>Humidity: {currentWeather.main.humidity}%</S.Text>
-          <S.Text>Visibility: {(currentWeather.visibility / 1000).toFixed(1)}km</S.Text>
-        </S.InfoWrapper>
-      </S.MainWrapper>
-    );
+  if (Object.keys(currentWeather).length === 0) {
+    return;
   }
 
-  return <div>Weather api doesn`&apos;`t work</div>; /* how to do without it? */
+  return (
+    <S.MainWrapper>
+      <S.Date>{new Date().toDateString()} </S.Date>
+      <S.Title>
+        {currentWeather.name}, {currentWeather.sys.country}
+      </S.Title>
+      <S.CurrentWeatherWrapper>
+        <S.ImageWrapper>
+          <img src={weatherIcon} alt="weatherIcon" />
+        </S.ImageWrapper>
+        <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
+      </S.CurrentWeatherWrapper>
+      <S.Description>
+        Feels like {Math.round(currentWeather.main.feels_like)}&deg;.{' '}
+        {upperCase(currentWeather.weather[0].description)}.
+      </S.Description>
+      <S.InfoWrapper>
+        <S.Text>{currentWeather.wind.speed}m/s</S.Text>
+        <S.Text>{currentWeather.main.pressure} hPa</S.Text>
+        <S.Text>Humidity: {currentWeather.main.humidity}%</S.Text>
+        <S.Text>Visibility: {(currentWeather.visibility / 1000).toFixed(1)}km</S.Text>
+      </S.InfoWrapper>
+    </S.MainWrapper>
+  );
 };
 
 WeatherInfo.propTypes = {
