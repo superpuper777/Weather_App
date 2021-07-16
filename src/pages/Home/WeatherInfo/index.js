@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
 import { upperCase } from 'utils';
+import { iconUrl } from 'services/weather';
 import * as S from './styled';
 
-const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
+const WeatherInfo = ({ currentWeather, loading, isError }) => {
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -25,7 +26,7 @@ const WeatherInfo = ({ currentWeather, weatherIcon, loading, isError }) => {
       </S.Title>
       <S.CurrentWeatherWrapper>
         <S.ImageWrapper>
-          <img src={weatherIcon} alt="weatherIcon" />
+          <img src={`${iconUrl}${currentWeather.weather[0].icon}.png`} alt="weatherIcon" />
         </S.ImageWrapper>
         <S.Title>{Math.round(currentWeather.main.temp)}&deg;</S.Title>
       </S.CurrentWeatherWrapper>
@@ -59,7 +60,6 @@ WeatherInfo.propTypes = {
     visibility: PropTypes.number,
     wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
   }),
-  weatherIcon: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
 };

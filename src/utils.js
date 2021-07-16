@@ -9,3 +9,13 @@ export const getFormatedDate = (txtDate) => {
 
   return `${formatedDate[0]}, ${formatedDate[1]} ${formatedDate[2]}`;
 };
+
+export const getTime = (txtDate) => {
+  const time = new Date(txtDate).getHours();
+
+  return `${time}:00`;
+};
+
+export const generateId = () => {
+  return `_ ${Math.random().toString(36).substr(2, 9)}`;
+};

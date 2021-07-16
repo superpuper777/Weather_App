@@ -1,9 +1,31 @@
 import styled from 'styled-components';
-import { WiNightAltShowers } from 'weather-icons-react';
 
 export const Wrapper = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const CardWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const WeatherCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 `;
 
 export const InfoText = styled.p`
@@ -22,11 +44,6 @@ export const ImageWrapper = styled.div``;
 export const MainTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const MainInfoWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
 `;
 
 export const InfoWrapper = styled.div`
