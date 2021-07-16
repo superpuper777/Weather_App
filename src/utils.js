@@ -19,3 +19,7 @@ export const getTime = (txtDate) => {
 export const generateId = () => {
   return `_ ${Math.random().toString(36).substr(2, 9)}`;
 };
+
+export const cleanedArray = (arr) => {
+  return arr.filter((el) => el !== null);
+};

@@ -43,8 +43,6 @@ const SearchInput = ({
       try {
         const response = await fetchForecast(searchTerm, selectedUnit.value);
 
-        console.log(groupByDay(response.data.list));
-
         setListOfWeather(groupByDay(response.data.list));
       } catch (error) {
         setIsError(true);

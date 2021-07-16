@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { generateId } from 'utils';
+import { generateId, cleanedArray } from 'utils';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
 import WeatherListItem from './WeatherListItem';
 import * as S from './styled';
 
 const WeatherList = ({ listOfWeather, loading, isError }) => {
-  console.log(listOfWeather);
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -23,7 +22,7 @@ const WeatherList = ({ listOfWeather, loading, isError }) => {
     <S.WeatherWrapper>
       <S.Title>5-day forecast</S.Title>
       <S.WeatherList>
-        {listOfWeather.map((el) => (
+        {cleanedArray(listOfWeather).map((el) => (
           <S.WeatherListItem key={generateId()}>
             <WeatherListItem loading={loading} isError={isError} el={el} />
           </S.WeatherListItem>
