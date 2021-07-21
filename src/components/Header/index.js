@@ -14,6 +14,9 @@ const Header = () => {
         <S.NavigationItem>
           <S.NavLink to="/">Home</S.NavLink>
         </S.NavigationItem>
+        <S.NavigationItem>
+          <S.NavLink to="/forecast">Forecast</S.NavLink>
+        </S.NavigationItem>
       </S.Navigation>
     </S.Wrapper>
   );

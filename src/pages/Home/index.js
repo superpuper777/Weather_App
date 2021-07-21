@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import * as S from './styled';
-import SearchBar from './SearchBar';
+import SearchBar from '../../components/SearchBar';
 import WeatherInfo from './WeatherInfo';
 import WeatherList from './WeatherList';
 
@@ -28,8 +28,8 @@ const Home = () => {
         setLoading={setLoading}
         setIsError={setIsError}
       />{' '}
-      <WeatherInfo currentWeather={currentWeather} loading={loading} isError={isError} />{' '}
-      <WeatherList listOfWeather={listOfWeather} loading={loading} isError={isError} />{' '}
+      <WeatherInfo currentWeather={currentWeather} loading={loading} isError={isError} />
+      <WeatherList listOfWeather={listOfWeather} loading={loading} isError={isError} />
     </S.Wrapper>
   );
 };
