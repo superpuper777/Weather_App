@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { fetchForecast, groupByDay } from 'services/weather';
+import useDebounce from 'use-debounce';
 import * as S from './styled';
 import WeatherList from './WeatherList';
 
@@ -12,15 +13,17 @@ const Forecast = ({ query, selectedUnit }) => {
 
   const [isError, setIsError] = useState(false);
 
+  const debounceQuery = useDebounce(query, 1000);
+
   useEffect(() => {
-    if (!query) {
+    if (!debounceQuery) {
       return;
     }
     setLoading(true);
     setIsError(false);
     const getForecast = async () => {
       try {
-        const response = await fetchForecast(query, selectedUnit.value);
+        const response = await fetchForecast(debounceQuery, selectedUnit.value);
 
         setListOfWeather(groupByDay(response.data.list));
       } catch (error) {
@@ -32,7 +35,7 @@ const Forecast = ({ query, selectedUnit }) => {
     };
 
     getForecast();
-  }, [query, selectedUnit, setListOfWeather, setLoading, setIsError]);
+  }, [debounceQuery, selectedUnit, setListOfWeather, setLoading, setIsError]);
 
   return (
     <S.Wrapper>

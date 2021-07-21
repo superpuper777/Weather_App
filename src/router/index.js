@@ -18,12 +18,7 @@ const RouterComponent = () => {
     <S.RouterWrapper>
       <Router>
         <Header />
-        <SearchBar
-          query={query}
-          onSearchChange={setQuery}
-          unit={selectedUnit}
-          onUnitChange={setSelectedUnit}
-        />
+        <SearchBar query={query} onSearchChange={setQuery} onUnitChange={setSelectedUnit} />
         <Switch>
           <Route exact path="/">
             <Home query={query} selectedUnit={selectedUnit} />
