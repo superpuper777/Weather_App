@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+// import PropTypes from 'prop-types';
 
-import { fetchWeather, fetchForecast, groupByDay } from 'services/weather';
+// import { fetchWeather, fetchForecast, groupByDay } from 'services/weather';
 import * as S from './styled';
 
 const options = [
@@ -9,15 +9,8 @@ const options = [
   { value: 'imperial', label: 'Imperial: °F, mph' },
 ];
 
-const SearchBar = ({
-  setCurrentWeather,
-  setListOfWeather,
-  selectedUnit,
-  setSelectedUnit,
-  setLoading,
-  setIsError,
-}) => {
-  const [query, setQuery] = useState('Minsk');
+const SearchBar = ({ query, setQuery, selectedUnit, setSelectedUnit }) => {
+  // const [query, setQuery] = useState('Minsk');
 
   const [searchTerm, setSearchTerm] = useState('Minsk');
 
@@ -26,42 +19,42 @@ const SearchBar = ({
     setQuery('');
   };
 
-  useEffect(() => {
-    if (!searchTerm) {
-      return;
-    }
-    setLoading(true);
-    setIsError(false);
-    const getWeather = async () => {
-      try {
-        const response = await fetchWeather(searchTerm, selectedUnit.value);
+  // useEffect(() => {
+  //   if (!searchTerm) {
+  //     return;
+  //   }
+  //   setLoading(true);
+  //   setIsError(false);
+  //   const getWeather = async () => {
+  //     try {
+  //       const response = await fetchWeather(searchTerm, selectedUnit.value);
 
-        setCurrentWeather(response.data);
-      } catch (error) {
-        setIsError(true);
-        console.log('error');
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       setCurrentWeather(response.data);
+  //     } catch (error) {
+  //       setIsError(true);
+  //       console.log('error');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    const getForecast = async () => {
-      try {
-        const response = await fetchForecast(searchTerm, selectedUnit.value);
+  //   const getForecast = async () => {
+  //     try {
+  //       const response = await fetchForecast(searchTerm, selectedUnit.value);
 
-        setListOfWeather(groupByDay(response.data.list));
-      } catch (error) {
-        setIsError(true);
-        console.log('error');
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       setListOfWeather(groupByDay(response.data.list));
+  //     } catch (error) {
+  //       setIsError(true);
+  //       console.log('error');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    getForecast();
+  //   getForecast();
 
-    getWeather();
-  }, [searchTerm, selectedUnit, setCurrentWeather, setListOfWeather, setLoading, setIsError]);
+  //   getWeather();
+  // }, [searchTerm, selectedUnit, setCurrentWeather, setListOfWeather, setLoading, setIsError]);
 
   return (
     <S.SearchBarWrapper>
@@ -86,13 +79,13 @@ const SearchBar = ({
   );
 };
 
-SearchBar.propTypes = {
-  setCurrentWeather: PropTypes.func,
-  setListOfWeather: PropTypes.func.isRequired,
-  selectedUnit: PropTypes.shape({ value: PropTypes.string }).isRequired,
-  setSelectedUnit: PropTypes.func,
-  setLoading: PropTypes.func,
-  setIsError: PropTypes.func,
-};
+// SearchBar.propTypes = {
+//   setCurrentWeather: PropTypes.func,
+//   setListOfWeather: PropTypes.func.isRequired,
+//   selectedUnit: PropTypes.shape({ value: PropTypes.string }).isRequired,
+//   setSelectedUnit: PropTypes.func,
+//   setLoading: PropTypes.func,
+//   setIsError: PropTypes.func,
+// };
 
 export default SearchBar;

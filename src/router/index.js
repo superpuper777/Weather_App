@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from 'components/Header';
@@ -8,17 +8,28 @@ import Forecast from 'pages/Forecast';
 import * as S from './styled';
 
 const RouterComponent = () => {
+  const [query, setQuery] = useState('Minsk');
+
+  const [selectedUnit, setSelectedUnit] = useState({
+    value: 'metric',
+  });
+
   return (
     <S.RouterWrapper>
       <Header />
-      <SearchBar />
+      <SearchBar
+        query={query}
+        onSearchChange={setQuery}
+        unit={selectedUnit}
+        onUnitChange={setSelectedUnit}
+      />
       <Router>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home query={query} selectedUnit={selectedUnit} />
           </Route>
           <Route exact path="/forecast">
-            <Forecast />
+            <Forecast query={query} selectedUnit={selectedUnit} />
           </Route>
         </Switch>
       </Router>
