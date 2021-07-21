@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { fetchWeather } from 'services/weather';
 import * as S from './styled';
-// import SearchBar from '../../components/SearchBar';
 import WeatherInfo from './WeatherInfo';
 
 const Home = ({ query, selectedUnit }) => {
   const [currentWeather, setCurrentWeather] = useState({});
-
-  // const [listOfWeather, setListOfWeather] = useState([]);
-
-  // const [selectedUnit, setSelectedUnit] = useState({
-  //   value: 'metric',
-  // });
 
   const [loading, setLoading] = useState(false);
 
@@ -45,6 +39,11 @@ const Home = ({ query, selectedUnit }) => {
       <WeatherInfo currentWeather={currentWeather} loading={loading} isError={isError} />
     </S.Wrapper>
   );
+};
+
+Home.propTypes = {
+  query: PropTypes.string,
+  selectedUnit: PropTypes.shape({ value: PropTypes.string }).isRequired,
 };
 
 export default Home;
