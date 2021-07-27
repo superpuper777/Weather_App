@@ -32,6 +32,7 @@ export const InfoText = styled.p`
   color: ${(props) => (props.desc ? 'gray' : 'palevioletred')};
   font-size: ${(props) => (props.desc ? '12px' : 'normal')};
   font-weight: ${(props) => (props.date ? 'bold' : 'normal')};
+  border-bottom: ${(props) => (props.date ? '2.5px solid palevioletred' : 'none')};
 `;
 
 export const WeatherWrapper = styled.div`
