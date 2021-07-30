@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchWeather } from 'services/weather';
 import useDebounce from 'use-debounce';
+import { FETCH_WEATHER } from 'state/action-creators';
 import * as S from './styled';
 import WeatherInfo from './WeatherInfo';
 
 const Home = ({ query, selectedUnit }) => {
+  const dispatch = useDispatch();
+
+  const weather = useSelector((state) => state.weather);
+
+  console.log(weather);
+
   const [currentWeather, setCurrentWeather] = useState({});
 
   const [loading, setLoading] = useState(false);
@@ -25,6 +33,8 @@ const Home = ({ query, selectedUnit }) => {
       try {
         const response = await fetchWeather(debounceQuery, selectedUnit.value);
 
+        dispatch({ type: FETCH_WEATHER, payload: response });
+
         setCurrentWeather(response.data);
       } catch (error) {
         setIsError(true);
@@ -35,7 +45,7 @@ const Home = ({ query, selectedUnit }) => {
     };
 
     getWeather();
-  }, [debounceQuery, selectedUnit, setCurrentWeather, setLoading, setIsError]);
+  }, [debounceQuery, selectedUnit, setCurrentWeather, setLoading, setIsError, dispatch]);
 
   return (
     <S.Wrapper>
