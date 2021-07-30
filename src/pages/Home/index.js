@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchWeather } from 'services/weather';
 import useDebounce from 'use-debounce';
-import { FETCH_WEATHER } from 'state/action-creators';
+import { weatherAction } from 'state/action-creators';
 import * as S from './styled';
 import WeatherInfo from './WeatherInfo';
 
@@ -33,8 +33,7 @@ const Home = ({ query, selectedUnit }) => {
       try {
         const response = await fetchWeather(debounceQuery, selectedUnit.value);
 
-        dispatch({ type: FETCH_WEATHER, payload: response });
-
+        weatherAction(response.data); // or dispatch(weatherAction(response.data))
         setCurrentWeather(response.data);
       } catch (error) {
         setIsError(true);

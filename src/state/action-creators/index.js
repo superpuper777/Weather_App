@@ -2,7 +2,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 
 export const FETCH_FORECAST = 'FETCH_FORECAST';
 
-export const fetchWeather = (data) => {
+export const weatherAction = (data) => {
   return (dispatch) => {
     dispatch({
       type: FETCH_WEATHER,
@@ -11,7 +11,7 @@ export const fetchWeather = (data) => {
   };
 };
 
-export const fetchForecast = (data) => {
+export const forecastAction = (data) => {
   return (dispatch) => {
     dispatch({
       type: FETCH_FORECAST,
