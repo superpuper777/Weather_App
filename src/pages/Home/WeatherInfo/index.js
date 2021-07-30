@@ -7,8 +7,8 @@ import { upperCase } from 'utils';
 import { iconUrl } from 'services/weather';
 import * as S from './styled';
 
-const WeatherInfo = ({ currentWeather, loading, isError }) => {
-  if (loading) {
+const WeatherInfo = ({ currentWeather, isLoading, isError }) => {
+  if (isLoading) {
     return <LoadingSpinner />;
   }
   if (isError) {
@@ -60,7 +60,7 @@ WeatherInfo.propTypes = {
     visibility: PropTypes.number,
     wind: PropTypes.shape({ speed: PropTypes.number.isRequired }),
   }),
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
 };
 

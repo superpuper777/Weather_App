@@ -9,7 +9,7 @@ import WeatherList from './WeatherList';
 const Forecast = ({ query, selectedUnit }) => {
   const [listOfWeather, setListOfWeather] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const [isError, setIsError] = useState(false);
 
@@ -39,7 +39,7 @@ const Forecast = ({ query, selectedUnit }) => {
 
   return (
     <S.Wrapper>
-      <WeatherList listOfWeather={listOfWeather} loading={loading} isError={isError} />
+      <WeatherList listOfWeather={listOfWeather} isLoading={isLoading} isError={isError} />
     </S.Wrapper>
   );
 };

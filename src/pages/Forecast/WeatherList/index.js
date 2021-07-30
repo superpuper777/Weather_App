@@ -7,8 +7,8 @@ import LoadingError from 'components/LoadingError';
 import WeatherListItem from './WeatherListItem';
 import * as S from './styled';
 
-const WeatherList = ({ listOfWeather, loading, isError }) => {
-  if (loading) {
+const WeatherList = ({ listOfWeather, isLoading, isError }) => {
+  if (isLoading) {
     return <LoadingSpinner />;
   }
   if (isError) {
@@ -24,7 +24,7 @@ const WeatherList = ({ listOfWeather, loading, isError }) => {
       <S.WeatherList>
         {cleanedArray(listOfWeather).map((el) => (
           <S.WeatherListItem key={generateId()}>
-            <WeatherListItem loading={loading} isError={isError} el={el} />
+            <WeatherListItem isLoading={isLoading} isError={isError} el={el} />
           </S.WeatherListItem>
         ))}
       </S.WeatherList>
@@ -34,7 +34,7 @@ const WeatherList = ({ listOfWeather, loading, isError }) => {
 
 WeatherList.propTypes = {
   listOfWeather: PropTypes.arrayOf(PropTypes.array),
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
 };
 
