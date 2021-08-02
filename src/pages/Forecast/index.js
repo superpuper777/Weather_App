@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { fetchForecast, groupByDay } from 'services/weather';
 import useDebounce from 'use-debounce';
+import { fetchForecastAction } from 'state/action-creators';
 import * as S from './styled';
 import WeatherList from './WeatherList';
 
 const Forecast = ({ query, selectedUnit }) => {
+  const dispatch = useDispatch();
+
   const [listOfWeather, setListOfWeather] = useState([]);
 
   const [isLoading, setLoading] = useState(false);
@@ -25,6 +29,8 @@ const Forecast = ({ query, selectedUnit }) => {
       try {
         const response = await fetchForecast(debounceQuery, selectedUnit.value);
 
+        dispatch(fetchForecastAction(debounceQuery, selectedUnit.value));
+
         setListOfWeather(groupByDay(response.data.list));
       } catch (error) {
         setIsError(true);
@@ -35,7 +41,7 @@ const Forecast = ({ query, selectedUnit }) => {
     };
 
     getForecast();
-  }, [debounceQuery, selectedUnit, setListOfWeather, setLoading, setIsError]);
+  }, [debounceQuery, selectedUnit, setListOfWeather, setLoading, setIsError, dispatch]);
 
   return (
     <S.Wrapper>

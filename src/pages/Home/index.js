@@ -29,7 +29,7 @@ const Home = ({ query, selectedUnit }) => {
       try {
         const response = await fetchWeather(debounceQuery, selectedUnit.value);
 
-        dispatch(fetchWeatherAction(debounceQuery, selectedUnit.value)); // or dispatch(weatherAction(response.data))
+        dispatch(fetchWeatherAction(debounceQuery, selectedUnit.value));
         setCurrentWeather(response.data);
       } catch (error) {
         setIsError(true);

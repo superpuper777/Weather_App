@@ -11,7 +11,7 @@ import * as S from './styled';
 const WeatherInfo = ({ currentWeather, isLoading, isError }) => {
   const weather = useSelector((state) => state.weather.weather);
 
-  console.log(weather.name);
+  console.log(weather);
   if (isLoading) {
     return <LoadingSpinner />;
   }
