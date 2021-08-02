@@ -5,7 +5,7 @@ const forecastReducer = (state = [], action) => {
     case FETCH_FORECAST:
       return {
         ...state,
-        forecast: action.playload.data, // action.playload?
+        forecast: action.payload.data,
       };
     default:
       return state;

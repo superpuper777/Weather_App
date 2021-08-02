@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
@@ -8,6 +9,9 @@ import { iconUrl } from 'services/weather';
 import * as S from './styled';
 
 const WeatherInfo = ({ currentWeather, isLoading, isError }) => {
+  const weather = useSelector((state) => state.weather.weather);
+
+  console.log(weather.name);
   if (isLoading) {
     return <LoadingSpinner />;
   }

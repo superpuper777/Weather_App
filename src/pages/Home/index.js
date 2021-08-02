@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { fetchWeather } from 'services/weather';
 import useDebounce from 'use-debounce';
@@ -10,10 +10,6 @@ import WeatherInfo from './WeatherInfo';
 
 const Home = ({ query, selectedUnit }) => {
   const dispatch = useDispatch();
-
-  const weather = useSelector((state) => state.weather);
-
-  console.log(weather);
 
   const [currentWeather, setCurrentWeather] = useState({});
 
@@ -33,7 +29,7 @@ const Home = ({ query, selectedUnit }) => {
       try {
         const response = await fetchWeather(debounceQuery, selectedUnit.value);
 
-        dispatch(fetchWeatherAction(response.data)); // or dispatch(weatherAction(response.data))
+        dispatch(fetchWeatherAction(debounceQuery, selectedUnit.value)); // or dispatch(weatherAction(response.data))
         setCurrentWeather(response.data);
       } catch (error) {
         setIsError(true);

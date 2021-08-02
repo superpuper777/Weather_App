@@ -8,11 +8,13 @@ export const FETCH_WEATHER_ERROR = 'FETCH_WEATHER_ERROR';
 
 export const FETCH_FORECAST = 'FETCH_FORECAST';
 
-export const fetchWeatherAction = (data) => {
+export const fetchWeatherAction = (query, unit) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_WEATHER_REQUEST });
     try {
-      const weather = await fetchWeather('Minsk', data);
+      const weather = await fetchWeather(query, unit);
+
+      dispatch({ type: FETCH_WEATHER_SUCCESS, payload: weather.data });
     } catch (error) {
       dispatch({ type: FETCH_WEATHER_ERROR, payload: error });
     }

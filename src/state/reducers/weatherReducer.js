@@ -10,7 +10,7 @@ const initialState = {
   isError: false,
 };
 
-const weatherReducer = (state = initialState.weather, action) => {
+const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_WEATHER_REQUEST:
       return {
@@ -20,7 +20,7 @@ const weatherReducer = (state = initialState.weather, action) => {
       };
     case FETCH_WEATHER_SUCCESS:
       return {
-        weather: action.playload,
+        weather: action.payload,
         isLoading: false,
         isError: false,
       };
