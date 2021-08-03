@@ -1,4 +1,4 @@
-import { fetchForecast, fetchWeather } from 'services/weather';
+import { fetchForecast, fetchWeather, groupByDay } from 'services/weather';
 
 export const FETCH_WEATHER_REQUEST = 'FETCH_WEATHER_REQUEST';
 
@@ -31,7 +31,7 @@ export const fetchForecastAction = (query, unit) => {
     try {
       const forecast = await fetchForecast(query, unit);
 
-      dispatch({ type: FETCH_FORECAST_SUCCESS, payload: forecast.data.list });
+      dispatch({ type: FETCH_FORECAST_SUCCESS, payload: groupByDay(forecast.data.list) });
     } catch (error) {
       dispatch({ type: FETCH_FORECAST_ERROR, payload: error });
     }

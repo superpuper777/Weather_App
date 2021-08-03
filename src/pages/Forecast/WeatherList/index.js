@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import { generateId, cleanedArray } from 'utils';
@@ -8,38 +7,35 @@ import LoadingError from 'components/LoadingError';
 import WeatherListItem from './WeatherListItem';
 import * as S from './styled';
 
-const WeatherList = ({ listOfWeather, isLoading, isError }) => {
+const WeatherList = () => {
   const forecast = useSelector((state) => state.forecast.forecast);
 
-  console.log(forecast);
+  const isLoading = useSelector((state) => state.forecast.isLoading);
+
+  const isError = useSelector((state) => state.forecast.isError);
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
   if (isError) {
     return <LoadingError />;
   }
-  if (!listOfWeather) {
-    return;
+  if (!forecast) {
+    return null;
   }
 
   return (
     <S.WeatherWrapper>
       <S.Title>5-day forecast</S.Title>
       <S.WeatherList>
-        {cleanedArray(listOfWeather).map((el) => (
+        {cleanedArray(forecast).map((el) => (
           <S.WeatherListItem key={generateId()}>
-            <WeatherListItem isLoading={isLoading} isError={isError} el={el} />
+            <WeatherListItem el={el} />
           </S.WeatherListItem>
         ))}
       </S.WeatherList>
     </S.WeatherWrapper>
   );
-};
-
-WeatherList.propTypes = {
-  listOfWeather: PropTypes.arrayOf(PropTypes.array),
-  isLoading: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
 };
 
 export default WeatherList;
