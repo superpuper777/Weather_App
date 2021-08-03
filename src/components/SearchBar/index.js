@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeInputAction } from 'state/action-creators';
 
 import * as S from './styled';
 
@@ -9,6 +11,13 @@ const options = [
 ];
 
 const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
+  const dispatch = useDispatch();
+
+  const query2 = useSelector((state) => state.search.inputValue);
+
+  dispatch(changeInputAction(query));
+
+  console.log(query2);
   const clearSearchInput = () => {
     onSearchChange('');
   };
@@ -25,6 +34,9 @@ const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
         <S.SearchButton primary onClick={clearSearchInput}>
           Clear
         </S.SearchButton>
+        {/* <S.SearchButton primary onCLick={dispatch(changeInputAction(query))}>
+          Search
+        </S.SearchButton> */}
       </S.SearchInputWrapper>
       <S.UnitSelect
         placeholder="Temperature Unit"

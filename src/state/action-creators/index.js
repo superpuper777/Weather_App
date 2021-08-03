@@ -12,6 +12,8 @@ export const FETCH_FORECAST_SUCCESS = 'FETCH_FORECAST_SUCCESS';
 
 export const FETCH_FORECAST_ERROR = 'FETCH_FORECAST_ERROR';
 
+export const CHANGE_INPUT = 'CHANGE_INPUT';
+
 export const fetchWeatherAction = (query, unit) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_WEATHER_REQUEST });
@@ -35,5 +37,12 @@ export const fetchForecastAction = (query, unit) => {
     } catch (error) {
       dispatch({ type: FETCH_FORECAST_ERROR, payload: error });
     }
+  };
+};
+
+export const changeInputAction = (text) => {
+  return {
+    type: CHANGE_INPUT,
+    payload: text,
   };
 };
