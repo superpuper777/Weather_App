@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useDebounce from 'use-debounce';
 import { fetchForecastAction } from 'state/action-creators';
 import * as S from './styled';
 import WeatherList from './WeatherList';
 
-const Forecast = ({ query, selectedUnit }) => {
+const Forecast = ({ selectedUnit }) => {
   const dispatch = useDispatch();
+
+  const query = useSelector((state) => state.search.inputValue);
 
   const debounceQuery = useDebounce(query, 1000);
 
@@ -31,7 +33,6 @@ const Forecast = ({ query, selectedUnit }) => {
 };
 
 Forecast.propTypes = {
-  query: PropTypes.string,
   selectedUnit: PropTypes.shape({ value: PropTypes.string }).isRequired,
 };
 

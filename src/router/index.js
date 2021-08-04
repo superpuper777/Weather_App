@@ -8,8 +8,6 @@ import Forecast from 'pages/Forecast';
 import * as S from './styled';
 
 const RouterComponent = () => {
-  const [query, setQuery] = useState('Minsk');
-
   const [selectedUnit, setSelectedUnit] = useState({
     value: 'metric',
   });
@@ -18,13 +16,13 @@ const RouterComponent = () => {
     <S.RouterWrapper>
       <Router>
         <Header />
-        <SearchBar query={query} onSearchChange={setQuery} onUnitChange={setSelectedUnit} />
+        <SearchBar onUnitChange={setSelectedUnit} />
         <Switch>
           <Route exact path="/">
-            <Home query={query} selectedUnit={selectedUnit} />
+            <Home selectedUnit={selectedUnit} />
           </Route>
           <Route exact path="/forecast">
-            <Forecast query={query} selectedUnit={selectedUnit} />
+            <Forecast selectedUnit={selectedUnit} />
           </Route>
         </Switch>
       </Router>

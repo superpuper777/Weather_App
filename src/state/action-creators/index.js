@@ -14,6 +14,8 @@ export const FETCH_FORECAST_ERROR = 'FETCH_FORECAST_ERROR';
 
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 
+export const CLEAR_INPUT = 'CLEAR_INPUT';
+
 export const fetchWeatherAction = (query, unit) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_WEATHER_REQUEST });
@@ -43,6 +45,13 @@ export const fetchForecastAction = (query, unit) => {
 export const changeInputAction = (text) => {
   return {
     type: CHANGE_INPUT,
+    payload: text,
+  };
+};
+
+export const clearInputAction = (text) => {
+  return {
+    type: CLEAR_INPUT,
     payload: text,
   };
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeInputAction } from 'state/action-creators';
-import { store } from 'state/store';
+import { changeInputAction, clearInputAction } from 'state/action-creators';
 
 import * as S from './styled';
 
@@ -11,17 +10,18 @@ const options = [
   { value: 'imperial', label: 'Imperial: °F, mph' },
 ];
 
-const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
+const SearchBar = ({ onUnitChange }) => {
   const dispatch = useDispatch();
 
-  const query2 = useSelector((state) => state.search.inputValue);
+  const query = useSelector((state) => state.search.inputValue);
 
-  console.log(store.getState());
-  dispatch(changeInputAction(query));
-
-  console.log(query2);
+  console.log(query);
   const clearSearchInput = () => {
-    onSearchChange('');
+    dispatch(clearInputAction(''));
+  };
+
+  const handleInputChange = (e) => {
+    dispatch(changeInputAction(e.target.value));
   };
 
   return (
@@ -30,15 +30,12 @@ const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
         <S.SearchInput
           type="text"
           placeholder="Search City"
-          value={query2}
-          onChange={(e) => onSearchChange(e.target.value)}
+          value={query}
+          onChange={handleInputChange}
         />
         <S.SearchButton primary onClick={clearSearchInput}>
           Clear
         </S.SearchButton>
-        {/* <S.SearchButton primary onCLick={dispatch(changeInputAction(query))}>
-          Search
-        </S.SearchButton> */}
       </S.SearchInputWrapper>
       <S.UnitSelect
         placeholder="Temperature Unit"
@@ -51,8 +48,6 @@ const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
 };
 
 SearchBar.propTypes = {
-  query: PropTypes.string,
-  onSearchChange: PropTypes.func,
   onUnitChange: PropTypes.func,
 };
 
