@@ -1,7 +1,7 @@
 import { CHANGE_INPUT } from 'state/action-creators';
 
 const initialState = {
-  inpitValue: 'Horki',
+  inputValue: 'Horki',
 };
 
 const searchReducer = (state = initialState, action) => {

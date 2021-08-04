@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeInputAction } from 'state/action-creators';
+import { store } from 'state/store';
 
 import * as S from './styled';
 
@@ -15,6 +16,7 @@ const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
 
   const query2 = useSelector((state) => state.search.inputValue);
 
+  console.log(store.getState());
   dispatch(changeInputAction(query));
 
   console.log(query2);
@@ -28,7 +30,7 @@ const SearchBar = ({ query, onSearchChange, onUnitChange }) => {
         <S.SearchInput
           type="text"
           placeholder="Search City"
-          value={query}
+          value={query2}
           onChange={(e) => onSearchChange(e.target.value)}
         />
         <S.SearchButton primary onClick={clearSearchInput}>
