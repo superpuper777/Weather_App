@@ -2,7 +2,7 @@ import {
   FETCH_FORECAST_REQUEST,
   FETCH_FORECAST_SUCCESS,
   FETCH_FORECAST_ERROR,
-} from 'state/action-creators';
+} from './action-creators';
 
 const initialState = {
   forecast: null,

@@ -1,4 +1,4 @@
-import { SELECT_METRIC, SELECT_IMPERIAL } from 'state/action-creators';
+import { SELECT_METRIC, SELECT_IMPERIAL } from './action-creators';
 
 const initialState = {
   value: 'metric',

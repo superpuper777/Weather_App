@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import weatherReducer from './weatherReducer';
-import forecastReducer from './forecastReducer';
-import searchReducer from './searchReducer';
-import unitReducer from './unitReducer';
+
+import forecastReducer from './forecast/reducer';
+import searchReducer from './search/reducer';
+import unitReducer from './unit/reducer';
+import weatherReducer from './weather/reducer';
 
 const rootReducer = combineReducers({
   weather: weatherReducer,

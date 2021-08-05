@@ -1,12 +1,10 @@
-import { CHANGE_INPUT, CLEAR_INPUT } from 'state/action-creators';
+import { CHANGE_INPUT, CLEAR_INPUT } from './action-creators';
 
 const initialState = {
   inputValue: 'Horki',
 };
 
 const searchReducer = (state = initialState, action) => {
-  console.log('reducer', action);
-
   switch (action.type) {
     case CHANGE_INPUT:
       return { inputValue: action.payload };

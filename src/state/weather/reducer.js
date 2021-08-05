@@ -2,7 +2,7 @@ import {
   FETCH_WEATHER_REQUEST,
   FETCH_WEATHER_SUCCESS,
   FETCH_WEATHER_ERROR,
-} from 'state/action-creators';
+} from './action-creators';
 
 const initialState = {
   weather: null,

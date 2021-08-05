@@ -1,11 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeInputAction,
-  clearInputAction,
-  selectImperialAction,
-  selectMetricAction,
-} from 'state/action-creators';
+import { selectImperialAction, selectMetricAction } from 'state/unit/action-creators';
+import { changeInputAction, clearInputAction } from 'state/search/action-creators';
 
 import * as S from './styled';
 
@@ -21,7 +17,6 @@ const SearchBar = () => {
 
   const unit = useSelector((state) => state.unit.value);
 
-  console.log(query, unit);
   const clearSearchInput = () => {
     dispatch(clearInputAction(''));
   };

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useDebounce from 'use-debounce';
-import { fetchWeatherAction } from 'state/action-creators';
+import { fetchWeatherAction } from 'state/weather/action-creators';
 import * as S from './styled';
 import WeatherInfo from './WeatherInfo';
 
