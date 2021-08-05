@@ -16,6 +16,10 @@ export const CHANGE_INPUT = 'CHANGE_INPUT';
 
 export const CLEAR_INPUT = 'CLEAR_INPUT';
 
+export const SELECT_METRIC = 'SELECT_METRIC';
+
+export const SELECT_IMPERIAL = 'SELECT_IMPERIAL';
+
 export const fetchWeatherAction = (query, unit) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_WEATHER_REQUEST });
@@ -53,5 +57,17 @@ export const clearInputAction = (text) => {
   return {
     type: CLEAR_INPUT,
     payload: text,
+  };
+};
+
+export const selectMetricAction = () => {
+  return {
+    type: SELECT_METRIC,
+  };
+};
+
+export const selectImperialAction = () => {
+  return {
+    type: SELECT_IMPERIAL,
   };
 };

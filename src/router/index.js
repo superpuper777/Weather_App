@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from 'components/Header';
@@ -8,21 +8,17 @@ import Forecast from 'pages/Forecast';
 import * as S from './styled';
 
 const RouterComponent = () => {
-  const [selectedUnit, setSelectedUnit] = useState({
-    value: 'metric',
-  });
-
   return (
     <S.RouterWrapper>
       <Router>
         <Header />
-        <SearchBar onUnitChange={setSelectedUnit} />
+        <SearchBar />
         <Switch>
           <Route exact path="/">
-            <Home selectedUnit={selectedUnit} />
+            <Home />
           </Route>
           <Route exact path="/forecast">
-            <Forecast selectedUnit={selectedUnit} />
+            <Forecast />
           </Route>
         </Switch>
       </Router>
