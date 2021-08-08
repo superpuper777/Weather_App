@@ -14,6 +14,10 @@ const WeatherList = () => {
 
   const isError = useSelector((state) => state.forecast.isError);
 
+  const sa = useSelector((state) => state.forecast);
+
+  console.log(forecast, sa);
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -26,7 +30,7 @@ const WeatherList = () => {
 
   return (
     <S.WeatherWrapper>
-      <S.Title>5-day forecast</S.Title>
+      <S.Title> 5 - day forecast </S.Title>
       <S.WeatherList>
         {cleanedArray(forecast).map((el) => (
           <S.WeatherListItem key={generateId()}>

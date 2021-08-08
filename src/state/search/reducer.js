@@ -1,18 +1,22 @@
-import { CHANGE_INPUT, CLEAR_INPUT } from './action-creators';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   inputValue: 'Horki',
 };
 
-const searchReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case CHANGE_INPUT:
-      return { inputValue: action.payload };
-    case CLEAR_INPUT:
-      return { inputValue: action.payload };
-    default:
-      return state;
-  }
-};
+const searchSlice = createSlice({
+  name: 'search',
+  initialState,
+  reducers: {
+    changeInputAction(state, action) {
+      state.inputValue = action.payload;
+    },
+    clearInputAction(state, action) {
+      state.inputValue = action.payload;
+    },
+  },
+});
 
-export default searchReducer;
+export default searchSlice.reducer;
+
+export const { changeInputAction, clearInputAction } = searchSlice.actions;

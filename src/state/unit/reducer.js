@@ -1,3 +1,4 @@
+// import { createSlice } from '@reduxjs/toolkit';
 import { SELECT_METRIC, SELECT_IMPERIAL } from './action-creators';
 
 const initialState = {
@@ -16,3 +17,20 @@ const unitReducer = (state = initialState, action) => {
 };
 
 export default unitReducer;
+
+// const unitSlice = createSlice({
+//   name: 'unit',
+//   initialState,
+//   reducers: {
+//     selectMetric() {
+//       return { value: 'metric' };
+//     },
+//     selectImperial() {
+//       return { value: 'imperial' };
+//     },
+//   },
+// });
+
+// export default unitSlice.reducer;
+
+// export const { selectMetric, selectImperial } = unitSlice.actions;
