@@ -2,17 +2,18 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { generateId, cleanedArray } from 'utils';
+import { getForecast, getIsLoading, getIsError } from 'state/forecast/selectors';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
 import WeatherListItem from './WeatherListItem';
 import * as S from './styled';
 
 const WeatherList = () => {
-  const forecast = useSelector((state) => state.forecast.forecast);
+  const forecast = useSelector(getForecast);
 
-  const isLoading = useSelector((state) => state.forecast.isLoading);
+  const isLoading = useSelector(getIsLoading);
 
-  const isError = useSelector((state) => state.forecast.isError);
+  const isError = useSelector(getIsError);
 
   const sa = useSelector((state) => state.forecast);
 

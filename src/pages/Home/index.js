@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useDebounce from 'use-debounce';
+import { getUnit } from 'state/unit/selectors';
+import { getQuery } from 'state/search/selectors';
 import { fetchWeatherAction } from 'state/weather/action-creators';
 import * as S from './styled';
 import WeatherInfo from './WeatherInfo';
@@ -9,9 +11,9 @@ import WeatherInfo from './WeatherInfo';
 const Home = () => {
   const dispatch = useDispatch();
 
-  const query = useSelector((state) => state.search.inputValue);
+  const query = useSelector(getQuery);
 
-  const unit = useSelector((state) => state.unit.value);
+  const unit = useSelector(getUnit);
 
   const debounceQuery = useDebounce(query, 1000);
 
@@ -19,11 +21,7 @@ const Home = () => {
     if (!debounceQuery) {
       return;
     }
-    const getWeather = async () => {
-      await dispatch(fetchWeatherAction(debounceQuery, unit));
-    };
-
-    getWeather();
+    dispatch(fetchWeatherAction(debounceQuery, unit));
   }, [debounceQuery, unit, dispatch]);
 
   return (
