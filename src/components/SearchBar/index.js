@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { getUnit } from 'state/unit/selectors';
+import { getQuery } from 'state/search/selectors';
 import { selectImperialAction, selectMetricAction } from 'state/unit/action-creators';
 import { changeInputAction, clearInputAction } from 'state/search/action-creators';
-
 import * as S from './styled';
 
 const options = [
@@ -13,9 +15,9 @@ const options = [
 const SearchBar = () => {
   const dispatch = useDispatch();
 
-  const query = useSelector((state) => state.search.inputValue);
+  const query = useSelector(getQuery);
 
-  const unit = useSelector((state) => state.unit.value);
+  const unit = useSelector(getUnit);
 
   const clearSearchInput = () => {
     dispatch(clearInputAction(''));

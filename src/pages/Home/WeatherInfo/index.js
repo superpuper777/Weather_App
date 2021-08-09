@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { getWeather, getIsLoading, getIsError } from 'state/weather/selectors';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
 import { upperCase } from 'utils';
@@ -8,11 +9,11 @@ import { iconUrl } from 'services/weather';
 import * as S from './styled';
 
 const WeatherInfo = () => {
-  const weather = useSelector((state) => state.weather.weather);
+  const weather = useSelector(getWeather);
 
-  const isLoading = useSelector((state) => state.weather.isLoading);
+  const isLoading = useSelector(getIsLoading);
 
-  const isError = useSelector((state) => state.weather.isError);
+  const isError = useSelector(getIsError);
 
   if (isLoading) {
     return <LoadingSpinner />;
