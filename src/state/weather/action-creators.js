@@ -1,20 +1,15 @@
 import { fetchWeather } from 'services/weather';
-
-export const FETCH_WEATHER_REQUEST = 'FETCH_WEATHER_REQUEST';
-
-export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS';
-
-export const FETCH_WEATHER_ERROR = 'FETCH_WEATHER_ERROR';
+import { fetchWeatherRequest, fetchWeatherSuccess, fetchWeatherError } from './reducer';
 
 export const fetchWeatherAction = (query, unit) => {
   return async (dispatch) => {
-    dispatch({ type: FETCH_WEATHER_REQUEST });
+    dispatch(fetchWeatherRequest());
     try {
       const weather = await fetchWeather(query, unit);
 
-      dispatch({ type: FETCH_WEATHER_SUCCESS, payload: weather.data });
+      dispatch(fetchWeatherSuccess(weather.data));
     } catch (error) {
-      dispatch({ type: FETCH_WEATHER_ERROR, payload: error });
+      dispatch(fetchWeatherError());
     }
   };
 };

@@ -8,10 +8,10 @@ const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    changeInputAction(state, action) {
+    changeInputAction: (state, action) => {
       state.inputValue = action.payload;
     },
-    clearInputAction(state, action) {
+    clearInputAction: (state, action) => {
       state.inputValue = action.payload;
     },
   },
