@@ -1,36 +1,22 @@
-// import { createSlice } from '@reduxjs/toolkit';
-import { SELECT_METRIC, SELECT_IMPERIAL } from './action-creators';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: 'metric',
 };
 
-const unitReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SELECT_METRIC:
-      return { value: 'metric' };
-    case SELECT_IMPERIAL:
-      return { value: 'imperial' };
-    default:
-      return state;
-  }
-};
+const unitSlice = createSlice({
+  name: 'unit',
+  initialState,
+  reducers: {
+    selectMetric: (state) => {
+      state.value = 'metric';
+    },
+    selectImperial: (state) => {
+      state.value = 'imperial';
+    },
+  },
+});
 
-export default unitReducer;
+export default unitSlice.reducer;
 
-// const unitSlice = createSlice({
-//   name: 'unit',
-//   initialState,
-//   reducers: {
-//     selectMetric() {
-//       return { value: 'metric' };
-//     },
-//     selectImperial() {
-//       return { value: 'imperial' };
-//     },
-//   },
-// });
-
-// export default unitSlice.reducer;
-
-// export const { selectMetric, selectImperial } = unitSlice.actions;
+export const { selectMetric, selectImperial } = unitSlice.actions;

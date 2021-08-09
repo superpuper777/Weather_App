@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectImperial, selectMetric } from 'state/unit/reducer';
-import { changeInputAction, clearInputAction } from 'state/search/reducer';
-import { selectImperialAction, selectMetricAction } from 'state/unit/action-creators';
+import { selectImperial, selectMetric } from 'state/unit/reducer';
+import { changeInput, clearInput } from 'state/search/reducer';
 import * as S from './styled';
 
 const options = [
@@ -19,17 +18,17 @@ const SearchBar = () => {
 
   console.log(query);
   const clearSearchInput = () => {
-    dispatch(clearInputAction(''));
+    dispatch(clearInput(''));
   };
 
   const handleInputChange = (e) => {
-    dispatch(changeInputAction(e.target.value));
+    dispatch(changeInput(e.target.value));
   };
 
   const toggleUnits = () => {
     if (unit === 'metric') {
-      dispatch(selectImperialAction());
-    } else dispatch(selectMetricAction());
+      dispatch(selectImperial());
+    } else dispatch(selectMetric());
   };
 
   return (

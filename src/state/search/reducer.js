@@ -8,10 +8,10 @@ const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    changeInputAction: (state, action) => {
+    changeInput: (state, action) => {
       state.inputValue = action.payload;
     },
-    clearInputAction: (state, action) => {
+    clearInput: (state, action) => {
       state.inputValue = action.payload;
     },
   },
@@ -19,4 +19,4 @@ const searchSlice = createSlice({
 
 export default searchSlice.reducer;
 
-export const { changeInputAction, clearInputAction } = searchSlice.actions;
+export const { changeInput, clearInput } = searchSlice.actions;

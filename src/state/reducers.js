@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 import forecastReducer from './forecast/reducer';
-// import searchReducer from './search/reducer';
 import searchReducer from './search/reducer';
 import unitReducer from './unit/reducer';
 import weatherReducer from './weather/reducer';
