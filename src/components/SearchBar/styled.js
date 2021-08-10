@@ -17,7 +17,7 @@ export const customStyles = {
   option: (provided, state) => ({
     ...provided,
     color: state.isSelected ? 'white' : 'palevioletred',
-    padding: 20,
+    padding: 10,
     backgroundColor: state.isSelected ? 'palevioletred' : 'white',
   }),
 };
@@ -43,7 +43,7 @@ export const SearchButton = styled.button`
   background: transparent;
   font-size: 16px;
   border-radius: 3px;
-  border: 2px solid palevioletred;
+  border: none;
   color: palevioletred;
   cursor: pointer;
   padding: 10px;
@@ -55,7 +55,7 @@ export const SearchButton = styled.button`
       color: white;
     `};
   &:hover {
-    background: #d38ca4;
+    background: #8d1e43;
     color: #ffffff;
   }
 `;
