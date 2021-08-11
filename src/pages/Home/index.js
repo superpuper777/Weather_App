@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useDebounce from 'use-debounce';
 import { getUnit } from 'state/unit/selectors';
 import { getQuery } from 'state/search/selectors';
-import { fetchWeatherAction } from 'state/weather/action-creators';
+import { fetchWeatherAction } from 'state/weather/thunks';
 import * as S from './styled';
 import WeatherInfo from './WeatherInfo';
 
