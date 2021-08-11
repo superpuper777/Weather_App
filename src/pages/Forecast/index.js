@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useDebounce from 'use-debounce';
 import { getUnit } from 'state/unit/selectors';
 import { getQuery } from 'state/search/selectors';
-import { fetchForecastAction } from 'state/forecast/action-creators';
+import { fetchForecastAction } from 'state/forecast/thunks';
 import * as S from './styled';
 import WeatherList from './WeatherList';
 
