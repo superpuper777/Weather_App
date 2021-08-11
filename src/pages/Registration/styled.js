@@ -5,6 +5,13 @@ export const Wrapper = styled.div`
   padding: 0 6rem;
 `;
 
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 2rem;
+`;
+
 export const Form = styled.form`
   max-width: 500px;
   margin: 0 auto;
@@ -30,7 +37,9 @@ export const Input = styled.input`
   font-size: 14px;
 `;
 
-export const InputSubmit = styled.input.attrs({ type: 'submit' })`
+export const InputSubmit = styled.input.attrs({
+  type: 'submit',
+})`
   background: palevioletred;
   color: white;
   width: 100%;
@@ -48,6 +57,12 @@ export const InputSubmit = styled.input.attrs({ type: 'submit' })`
   }
 `;
 
+export const RadioInput = styled.input.attrs({
+  type: 'radio',
+})`
+  margin-right: 10px;
+`;
+
 export const SelectWrapper = styled.div``;
 
 export const FormSelect = styled(Select)`
@@ -62,8 +77,8 @@ export const customStyles = {
   }),
 };
 
-export const RadioWrapper = styled.div`
-  margin-top: 2rem;
-`;
+export const RadioWrapper = styled.div``;
 
-export const RadioInputItems = styled.div``;
+export const RadioInputItems = styled.div`
+  display: flex;
+`;

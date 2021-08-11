@@ -10,7 +10,7 @@ const options = [
 ];
 
 const Registration = () => {
-  const [gender, setGender] = useState('male');
+  const [active, setActive] = useState(0);
 
   const {
     register,
@@ -43,50 +43,51 @@ const Registration = () => {
             <S.Input {...register('lastname')} />
           </S.Label>
         </S.Formfield>
-        <S.SelectWrapper>
-          <S.Label htmlFor="type">Access Type</S.Label>
-          <Controller
-            name="type"
-            control={control}
-            {...register('type')}
-            render={({ field }) => (
-              <S.FormSelect
-                styles={S.customStyles}
-                {...field}
-                options={options}
-                placeholder="Choose your type"
-              />
-            )}
-          />
-        </S.SelectWrapper>
-        <S.RadioWrapper>
-          <S.RadioInputItems>
-            <S.Label htmlFor="male">
-              <input
-                type="radio"
-                value="Male"
-                checked={gender === 'Male'}
-                // onChange={onValueChange}
-                {...register('male')}
-              />
-              Male
-            </S.Label>
-          </S.RadioInputItems>
-          <S.RadioInputItems>
-            <S.Label htmlFor="male">
-              <input
-                type="radio"
-                value="Female"
-                checked={gender === 'Female'}
-                // onChange={onValueChange}
-                {...register('female')}
-              />
-              Female
-            </S.Label>
-          </S.RadioInputItems>
-          <div>Selected option is : {gender}</div>
-        </S.RadioWrapper>
-        <S.InputSubmit type="submit" />
+        <S.InfoWrapper>
+          <S.SelectWrapper>
+            <S.Label htmlFor="type">Access Type</S.Label>
+            <Controller
+              name="type"
+              control={control}
+              {...register('type')}
+              render={({ field }) => (
+                <S.FormSelect
+                  placeholder="Choose your type"
+                  styles={S.customStyles}
+                  {...field}
+                  options={options}
+                />
+              )}
+            />
+          </S.SelectWrapper>
+          <S.RadioWrapper>
+            <S.RadioInputItems>
+              <S.Label htmlFor="male">
+                <S.RadioInput
+                  type="radio"
+                  value="Male"
+                  checked={active === 0}
+                  onClick={() => setActive(0)}
+                  {...register('gender')}
+                />
+                Male
+              </S.Label>
+            </S.RadioInputItems>
+            <S.RadioInputItems>
+              <S.Label htmlFor="male">
+                <S.RadioInput
+                  type="radio"
+                  value="Female"
+                  checked={active === 1}
+                  onClick={() => setActive(1)}
+                  {...register('gender')}
+                />
+                Female
+              </S.Label>
+            </S.RadioInputItems>
+          </S.RadioWrapper>
+        </S.InfoWrapper>
+        <S.InputSubmit value="Submit" type="submit" />
       </S.Form>
     </S.Wrapper>
   );
