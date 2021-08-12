@@ -17,9 +17,21 @@ const Registration = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm({
+    defaultValues: {
+      usernam: '',
+      firstname: '',
+      lastname: '',
+      type: { value: 'user', label: 'user' },
+      gender: 'Male',
+    },
+  });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <S.Wrapper>
