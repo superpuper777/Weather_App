@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectImperial, selectMetric } from 'state/unit/reducer';
 import { changeInput, clearInput } from 'state/search/reducer';
 import { getUnit } from 'state/unit/selectors';
 import { getQuery } from 'state/search/selectors';
-
 import * as S from './styled';
 
 const options = [
@@ -14,13 +14,16 @@ const options = [
 ];
 
 const SearchBar = () => {
+  const location = useLocation();
+
+  useEffect(() => {}, [location]);
+
   const dispatch = useDispatch();
 
   const query = useSelector(getQuery);
 
   const unit = useSelector(getUnit);
 
-  console.log(query);
   const clearSearchInput = () => {
     dispatch(clearInput(''));
   };
@@ -34,6 +37,10 @@ const SearchBar = () => {
       dispatch(selectImperial());
     } else dispatch(selectMetric());
   };
+
+  if (location.pathname === '/registration') {
+    return null;
+  }
 
   return (
     <S.SearchBarWrapper>

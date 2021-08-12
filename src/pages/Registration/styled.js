@@ -1,8 +1,20 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 
+export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: center;
+  gap: 6rem;
+`;
+
 export const Wrapper = styled.div`
-  padding: 0 6rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const InfoWrapper = styled.div`
@@ -17,9 +29,14 @@ export const Form = styled.form`
   margin: 0 auto;
 `;
 
+export const Title = styled.h2`
+  color: palevioletred;
+`;
+
 export const Formfield = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const Label = styled.label`
@@ -40,7 +57,7 @@ export const Input = styled.input`
 export const InputSubmit = styled.input.attrs({
   type: 'submit',
 })`
-  background: palevioletred;
+  background: ${(props) => (props.disabled ? 'gray' : 'palevioletred')};
   color: white;
   width: 100%;
   text-transform: uppercase;
@@ -52,7 +69,7 @@ export const InputSubmit = styled.input.attrs({
   letter-spacing: 10px;
   &:hover,
   &:active {
-    background: #8d1e43;
+    background: ${(props) => (props.disabled ? 'gray' : '#8d1e43')};
     cursor: pointer;
   }
 `;
@@ -81,4 +98,27 @@ export const RadioWrapper = styled.div``;
 
 export const RadioInputItems = styled.div`
   display: flex;
+`;
+
+export const Error = styled.p`
+  color: #bf1650;
+  font-size: 12px;
+
+  ::before {
+    display: inline;
+    content: '⚠ ';
+  }
+`;
+
+export const Button = styled.button`
+  padding: 2rem;
+  align-self: flex-start;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: palevioletred;
+  &:hover {
+    color: #8d1e43;
+  }
 `;

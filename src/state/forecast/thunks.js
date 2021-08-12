@@ -9,9 +9,7 @@ export const fetchForecastAction = (query, unit) => {
 
       const groupedForecast = groupByDay(forecast.data.list);
 
-      console.log(groupedForecast);
       dispatch(fetchForecastSuccess(groupedForecast));
-      console.log(fetchForecastSuccess(groupedForecast));
     } catch (error) {
       dispatch(fetchForecastError());
     }

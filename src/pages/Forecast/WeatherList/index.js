@@ -15,10 +15,6 @@ const WeatherList = () => {
 
   const isError = useSelector(getIsError);
 
-  const sa = useSelector((state) => state.forecast);
-
-  console.log(forecast, sa);
-
   if (isLoading) {
     return <LoadingSpinner />;
   }

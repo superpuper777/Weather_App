@@ -41,6 +41,7 @@
     "react/prop-types": 0,
     "no-unused-vars": 1,
     "no-param-reassign": 0,
+    "prefer-const": 1,
     "import/no-unresolved": "off",
     "no-console": "off",
     "import/prefer-default-export": 0,
