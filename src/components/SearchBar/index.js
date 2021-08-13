@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,8 +15,6 @@ const options = [
 
 const SearchBar = () => {
   const location = useLocation();
-
-  useEffect(() => {}, [location]);
 
   const dispatch = useDispatch();
 

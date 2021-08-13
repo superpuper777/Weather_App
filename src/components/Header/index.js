@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import * as S from './styled';
 
 const Header = () => {
   const location = useLocation();
-
-  useEffect(() => {}, [location]);
 
   if (location.pathname === '/registration') {
     return null;
