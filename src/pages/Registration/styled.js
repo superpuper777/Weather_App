@@ -101,13 +101,7 @@ export const RadioInputItems = styled.div`
 `;
 
 export const Error = styled.p`
-  color: #bf1650;
   font-size: 12px;
-
-  ::before {
-    display: inline;
-    content: '⚠ ';
-  }
 `;
 
 export const Button = styled.button`

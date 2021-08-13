@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import * as S from './styled';
+
+const schema = yup.object().shape({
+  username: yup.string().min(3).required(),
+  firstname: yup.string().max(20).required(),
+  lastname: yup.string().max(20).required(),
+});
 
 const options = [
   { value: 'admin', label: 'admin' },
@@ -19,9 +27,10 @@ const Registration = () => {
     register,
     control,
     handleSubmit,
-    formState: { errors, isDirty, isValid, touchedFields },
+    formState: { errors, isDirty, isValid },
     reset,
   } = useForm({
+    resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
       username: '',
@@ -48,23 +57,22 @@ const Registration = () => {
           <S.Formfield>
             <S.Label htmlFor="username">
               Username
-              <S.Input {...register('username')} />
+              <S.Input {...register('username')} required />
+              <S.Error>{errors.username?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.Formfield>
             <S.Label htmlFor="firstname">
               First Name
-              <S.Input {...register('firstname', { required: true })} />
-              {errors.firstname && touchedFields.firstname && (
-                <S.Error>This field is required</S.Error>
-              )}
+              <S.Input {...register('firstname')} required />
+              <S.Error>{errors.firstname?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.Formfield>
             <S.Label htmlFor="lastname">
               Last Name
-              <S.Input {...register('lastname', { required: true, maxLength: 20 })} />
-              {errors.lastname && touchedFields.lastname && <S.Error>maximum length is 20</S.Error>}
+              <S.Input {...register('lastname')} required />
+              <S.Error>{errors.lastname?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.InfoWrapper>
