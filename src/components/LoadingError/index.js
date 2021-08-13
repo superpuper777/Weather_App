@@ -1,9 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './styled';
 
 const LoadingError = () => {
-  return <S.Error>Oops, something went wrong, unable to load data :(</S.Error>;
+  const { t } = useTranslation();
+
+  return <S.Error>{t('error')}</S.Error>;
 };
 
 export default LoadingError;

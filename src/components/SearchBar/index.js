@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation, Trans } from 'react-i18next';
 
 import { selectImperial, selectMetric } from 'state/unit/reducer';
 import { changeInput, clearInput } from 'state/search/reducer';
@@ -15,6 +16,8 @@ const options = [
 
 const SearchBar = () => {
   const location = useLocation();
+
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -50,15 +53,17 @@ const SearchBar = () => {
           onChange={handleInputChange}
         />
         <S.SearchButton primary onClick={clearSearchInput}>
-          Clear
+          {t('searchBar.clearButton')}
         </S.SearchButton>
       </S.SearchInputWrapper>
-      <S.UnitSelect
-        placeholder="Temperature Unit"
-        options={options}
-        onChange={toggleUnits}
-        styles={S.customStyles}
-      />
+      <Trans i18nKey="placeholderUnit">
+        <S.UnitSelect
+          placeholder={t('searchBar.placeholderUnit')}
+          options={options}
+          onChange={toggleUnits}
+          styles={S.customStyles}
+        />
+      </Trans>
     </S.SearchBarWrapper>
   );
 };

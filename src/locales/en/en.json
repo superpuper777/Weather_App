@@ -1,0 +1,12 @@
+{
+  "header": {
+    "homeLink": "Home",
+    "forecastLink": "Forecast",
+    "registrationLink": "Registration"
+  },
+  "error": "Oops, something went wrong, unable to load data :(",
+  "searchBar": {
+    "clearButton": "Clear",
+    "placeholderUnit": "Temperature Unit"
+  }
+}

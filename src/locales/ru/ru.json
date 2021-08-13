@@ -1,0 +1,12 @@
+{
+  "header": {
+    "homeLink": "Главная",
+    "forecastLink": "Прогноз на 5 дней",
+    "registrationLink": "Регистрация"
+  },
+  "error": "Упс, что-то пошло не так, не удалось загрузить данные :(",
+  "searchBar": {
+    "clearButton": "Очистить",
+    "placeholderUnit": "Eд. измерения"
+  }
+}

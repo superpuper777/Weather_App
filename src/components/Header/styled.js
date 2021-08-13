@@ -50,3 +50,21 @@ export const StyledLogo = styled(Logo)`
   opacity: 0.75;
   cursor: pointer;
 `;
+
+export const SwitchButton = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: palevioletred;
+  &:hover {
+    color: #8d1e43;
+  }
+`;
+
+export const AdditionalWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+`;
