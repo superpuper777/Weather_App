@@ -7,6 +7,24 @@
   "error": "Упс, что-то пошло не так, не удалось загрузить данные :(",
   "searchBar": {
     "clearButton": "Очистить",
-    "placeholderUnit": "Eд. измерения"
+    "placeholderUnit": "Eд. измерения",
+    "unitMetric": "по Цельсию °C, м/с",
+    "unitImperial": "по Фаренгейту °F, миль/ч"
+  },
+  "registration": {
+    "goBackBtn": "Назад",
+    "title": "Регистрация",
+    "userNameLabel": "Логин",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "typeLabel": "Тип доступа",
+    "typePlaceholder": "Выберите свой тип",
+    "genderLabel": "",
+    "genderMaleLabel": "Мужчина",
+    "genderFemaleLabel": "Женщина",
+    "submitBtn": "Отправить",
+    "selectedAdmin": "админ",
+    "selectedUser": "пользователь",
+    "selectedSuperadmin": "суперадмин"
   }
 }

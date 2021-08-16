@@ -9,15 +9,15 @@ import { getUnit } from 'state/unit/selectors';
 import { getQuery } from 'state/search/selectors';
 import * as S from './styled';
 
-const options = [
-  { value: 'metric', label: 'Metric: °C, m/s' },
-  { value: 'imperial', label: 'Imperial: °F, mph' },
-];
-
 const SearchBar = () => {
   const location = useLocation();
 
   const { t } = useTranslation();
+
+  const options = [
+    { value: 'metric', label: t('searchBar.unitMetric') },
+    { value: 'imperial', label: t('searchBar.unitImperial') },
+  ];
 
   const dispatch = useDispatch();
 
@@ -56,7 +56,7 @@ const SearchBar = () => {
           {t('searchBar.clearButton')}
         </S.SearchButton>
       </S.SearchInputWrapper>
-      <Trans i18nKey="placeholderUnit">
+      <Trans>
         <S.UnitSelect
           placeholder={t('searchBar.placeholderUnit')}
           options={options}

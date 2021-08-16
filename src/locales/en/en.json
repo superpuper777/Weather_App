@@ -7,6 +7,23 @@
   "error": "Oops, something went wrong, unable to load data :(",
   "searchBar": {
     "clearButton": "Clear",
-    "placeholderUnit": "Temperature Unit"
+    "placeholderUnit": "Temperature Unit",
+    "unitMetric": "Metric: °C, m/s",
+    "unitImperial": "Imperial: °F, mph"
+  },
+  "registration": {
+    "goBackBtn": "Go Back",
+    "title": "Registration",
+    "userNameLabel": "Username",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "typeLabel": "Access Type",
+    "typePlaceholder": "Choose your type",
+    "genderMaleLabel": "Male",
+    "genderFemaleLabel": "Female",
+    "submitBtn": "Submit",
+    "selectedAdmin": "admin",
+    "selectedUser": "user",
+    "selectedSuperadmin": "superadmin"
   }
 }

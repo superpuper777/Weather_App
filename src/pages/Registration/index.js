@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import SwitchLanguage from 'components/SwitchLanguage';
 import * as S from './styled';
 
 const schema = yup.object().shape({
@@ -12,13 +14,15 @@ const schema = yup.object().shape({
   lastname: yup.string().max(20).required(),
 });
 
-const options = [
-  { value: 'admin', label: 'admin' },
-  { value: 'user', label: 'user' },
-  { value: 'superadmin', label: 'superadmin' },
-];
-
 const Registration = () => {
+  const { t } = useTranslation();
+
+  const options = [
+    { value: 'admin', label: t('registration.selectedAdmin') },
+    { value: 'user', label: t('registration.selectedUser') },
+    { value: 'superadmin', label: t('registration.selectedSuperadmin') },
+  ];
+
   const [active, setActive] = useState(0);
 
   const history = useHistory();
@@ -36,7 +40,6 @@ const Registration = () => {
       username: '',
       firstname: '',
       lastname: '',
-      type: { value: 'user', label: 'user' },
       gender: 'Male',
     },
   });
@@ -49,46 +52,49 @@ const Registration = () => {
   return (
     <S.MainWrapper>
       <S.Button type="button" onClick={history.goBack}>
-        Go Back
+        {t('registration.goBackBtn')}
       </S.Button>
       <S.Wrapper>
-        <S.Title>Registration</S.Title>
+        <S.Title>{t('registration.title')}</S.Title>
+        <SwitchLanguage />
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.Formfield>
             <S.Label htmlFor="username">
-              Username
+              {t('registration.userNameLabel')}
               <S.Input {...register('username')} required />
               <S.Error>{errors.username?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.Formfield>
             <S.Label htmlFor="firstname">
-              First Name
+              {t('registration.firstNameLabel')}
               <S.Input {...register('firstname')} required />
               <S.Error>{errors.firstname?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.Formfield>
             <S.Label htmlFor="lastname">
-              Last Name
+              {t('registration.lastNameLabel')}
               <S.Input {...register('lastname')} required />
               <S.Error>{errors.lastname?.message}</S.Error>
             </S.Label>
           </S.Formfield>
           <S.InfoWrapper>
             <S.SelectWrapper>
-              <S.Label htmlFor="type">Access Type</S.Label>
+              <S.Label htmlFor="type">{t('registration.typeLabel')}</S.Label>
               <Controller
                 name="type"
                 control={control}
                 {...register('type')}
                 render={({ field }) => (
-                  <S.FormSelect
-                    placeholder="Choose your type"
-                    styles={S.customStyles}
-                    {...field}
-                    options={options}
-                  />
+                  <Trans i18nKey="typePlaceholder">
+                    <S.FormSelect
+                      placeholder={t('registration.typePlaceholder')}
+                      styles={S.customStyles}
+                      {...field}
+                      options={options}
+                    />
+                  </Trans>
                 )}
               />
             </S.SelectWrapper>
@@ -102,7 +108,7 @@ const Registration = () => {
                     onClick={() => setActive(0)}
                     {...register('gender')}
                   />
-                  Male
+                  {t('registration.genderMaleLabel')}
                 </S.Label>
               </S.RadioInputItems>
               <S.RadioInputItems>
@@ -114,12 +120,18 @@ const Registration = () => {
                     onClick={() => setActive(1)}
                     {...register('gender')}
                   />
-                  Female
+                  {t('registration.genderFemaleLabel')}
                 </S.Label>
               </S.RadioInputItems>
             </S.RadioWrapper>
           </S.InfoWrapper>
-          <S.InputSubmit value="Submit" type="submit" disabled={!isDirty || !isValid} />
+          <Trans i18nKey="submitBtn">
+            <S.InputSubmit
+              value={t('registration.submitBtn')}
+              type="submit"
+              disabled={!isDirty || !isValid}
+            />
+          </Trans>
         </S.Form>
       </S.Wrapper>
     </S.MainWrapper>
