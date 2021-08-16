@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { selectImperial, selectMetric } from 'state/unit/reducer';
 import { changeInput, clearInput } from 'state/search/reducer';
@@ -56,14 +56,12 @@ const SearchBar = () => {
           {t('searchBar.clearButton')}
         </S.SearchButton>
       </S.SearchInputWrapper>
-      <Trans>
-        <S.UnitSelect
-          placeholder={t('searchBar.placeholderUnit')}
-          options={options}
-          onChange={toggleUnits}
-          styles={S.customStyles}
-        />
-      </Trans>
+      <S.UnitSelect
+        placeholder={t('searchBar.placeholderUnit')}
+        options={options}
+        onChange={toggleUnits}
+        styles={S.customStyles}
+      />
     </S.SearchBarWrapper>
   );
 };

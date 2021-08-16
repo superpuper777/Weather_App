@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -87,14 +87,12 @@ const Registration = () => {
                 control={control}
                 {...register('type')}
                 render={({ field }) => (
-                  <Trans i18nKey="typePlaceholder">
-                    <S.FormSelect
-                      placeholder={t('registration.typePlaceholder')}
-                      styles={S.customStyles}
-                      {...field}
-                      options={options}
-                    />
-                  </Trans>
+                  <S.FormSelect
+                    placeholder={t('registration.typePlaceholder')}
+                    styles={S.customStyles}
+                    {...field}
+                    options={options}
+                  />
                 )}
               />
             </S.SelectWrapper>
@@ -125,13 +123,11 @@ const Registration = () => {
               </S.RadioInputItems>
             </S.RadioWrapper>
           </S.InfoWrapper>
-          <Trans i18nKey="submitBtn">
-            <S.InputSubmit
-              value={t('registration.submitBtn')}
-              type="submit"
-              disabled={!isDirty || !isValid}
-            />
-          </Trans>
+          <S.InputSubmit
+            value={t('registration.submitBtn')}
+            type="submit"
+            disabled={!isDirty || !isValid}
+          />
         </S.Form>
       </S.Wrapper>
     </S.MainWrapper>
